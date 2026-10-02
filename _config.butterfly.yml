@@ -1061,8 +1061,8 @@ css_prefix: true
 inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
-    # 首页头图偏浅，标题下的遮罩加深一点，保证白色站名可读
-    - <style>#page-header.full_page:before{background-color:rgba(0,0,0,.45)}</style>
+    # 首页头图：隐藏中央站名；遮罩改为上深下浅的渐变（顶部保证导航白字可读，中部放亮让图片醒目）
+    - '<style>#page-header.full_page #site-title{display:none}#page-header.full_page:before{background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.10) 45%,rgba(0,0,0,.28) 100%)}</style>'
   bottom:
     # - <script src="xxxx"></script>
 
