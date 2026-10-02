@@ -1,0 +1,17 @@
+# Hexo 构建产物
+public/
+.deploy*/
+db.json
+_multiconfig.yml
+
+# 依赖
+node_modules/
+
+# 项目自身规则
+.workbuddy/
+.shots/
+.tmp-shots/
+.tmp-*
+*.log
+.DS_Store
+Thumbs.db
