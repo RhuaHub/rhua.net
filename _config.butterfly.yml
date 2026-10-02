@@ -47,8 +47,8 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  # 键是图标类名，值是「链接 || 悬浮提示 || 图标色」
+  fab fa-github: https://github.com/rhua728 || GitHub || '#24292e'
 
 # --------------------------------------
 # Image Settings
