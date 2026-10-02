@@ -10,7 +10,7 @@ description: 华聚联盟免责声明：本站只提供商品促销折扣信息�
 
 ---
 
-**联系站长**：[GitHub @RhuaHub](https://github.com/RhuaHub)
+**联系站长**：[parit@sina.com](mailto:parit@sina.com)
 
 **生效日期**：2026 年 10 月 2 日
 <!-- DISCLAIMER:END -->

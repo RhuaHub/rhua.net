@@ -38,8 +38,8 @@ PAGE_END = "<!-- DISCLAIMER:END -->"
 
 DEFAULT_PREFIX = "免责声明："
 DEFAULT_LINK = "/disclaimer/"
-DEFAULT_CONTACT = "GitHub @RhuaHub"
-DEFAULT_CONTACT_URL = "https://github.com/RhuaHub"
+DEFAULT_CONTACT = "parit@sina.com"
+DEFAULT_CONTACT_URL = "mailto:parit@sina.com"
 DEFAULT_SINCE = "2026 年 10 月 2 日"
 
 PAGE_TEMPLATE = """---

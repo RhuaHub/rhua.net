@@ -48,7 +48,7 @@ code_blocks:
 #   icon: link || the description || color
 social:
   # 键是图标类名，值是「链接 || 悬浮提示 || 图标色」
-  fab fa-github: https://github.com/RhuaHub || GitHub || '#24292e'
+  fas fa-envelope: mailto:parit@sina.com || 邮箱 || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
@@ -290,9 +290,9 @@ aside:
     description:
     button:
       enable: true
-      icon: fab fa-github
-      text: 关注我
-      link: https://github.com/RhuaHub
+      icon: fas fa-envelope
+      text: 联系我
+      link: mailto:parit@sina.com
   card_announcement:
     enable: false
     content: This is my Blog

@@ -24,9 +24,9 @@
 #   ↑ 页脚开头的加粗前缀，它本身就是链往 /disclaimer/ 的链接
 # link: /disclaimer/
 #   ↑ 前缀的跳转地址
-# contact: GitHub @RhuaHub
+# contact: parit@sina.com
 #   ↑ 以下三项仅用于 /disclaimer/ 完整页的页脚信息
-# contact_url: https://github.com/RhuaHub
+# contact_url: mailto:parit@sina.com
 # since: 2026 年 10 月 2 日
 #
 # ↓↓↓ 以下是正文，从这里开始改 ↓↓↓
