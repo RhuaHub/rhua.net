@@ -48,7 +48,7 @@ code_blocks:
 #   icon: link || the description || color
 social:
   # 键是图标类名，值是「链接 || 悬浮提示 || 图标色」
-  fab fa-github: https://github.com/rhua728 || GitHub || '#24292e'
+  fab fa-github: https://github.com/RhuaHub || GitHub || '#24292e'
 
 # --------------------------------------
 # Image Settings
@@ -289,8 +289,8 @@ aside:
     button:
       enable: true
       icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/xxxxxx
+      text: 关注我
+      link: https://github.com/RhuaHub
   card_announcement:
     enable: true
     content: This is my Blog

@@ -15,7 +15,7 @@ date: 2026-10-02 21:47:15
 
 ## 联系
 
-- GitHub：[rhua728](https://github.com/rhua728)
+- GitHub：[RhuaHub](https://github.com/RhuaHub)
 - 站点：<https://rhua.net>
 
 > 本站内容均为个人实践记录，硬件与软件方案请结合自身环境判断，据此操作的风险自负。
