@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Rhua
+title: 华聚联盟
 subtitle: '折腾记录 · 技术笔记'
-description: 'rhua.net — 数码硬件、homelab 与前端折腾记录'
-keywords: 技术博客,数码,homelab,软路由,折腾
-author: rhua
+description: '华聚联盟（rhua.net）—— 折腾记录、数码硬件与前端实践的落脚地'
+keywords: 华聚联盟,RhuaHub,技术博客,数码,homelab,软路由,折腾
+author: 华聚联盟
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
