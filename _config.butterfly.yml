@@ -67,7 +67,7 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img:
+index_img: /img/hero-shopping-b.jpg
 
 # The banner image of archive page
 archive_img:
@@ -1061,6 +1061,8 @@ css_prefix: true
 inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
+    # 首页头图偏浅，标题下的遮罩加深一点，保证白色站名可读
+    - <style>#page-header.full_page:before{background-color:rgba(0,0,0,.45)}</style>
   bottom:
     # - <script src="xxxx"></script>
 
