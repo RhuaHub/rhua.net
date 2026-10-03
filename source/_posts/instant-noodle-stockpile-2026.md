@@ -1,6 +1,7 @@
 ---
 title: 方便面囤货指南：桶装 3.5 元、袋装 2 元就是好价
 date: 2026-10-03 09:20:00
+cover: /img/cover/cover-noodle.jpg
 description: 用官方比价数据说话——方便面各规格的合理入手价、渠道差价、以及囤货最容易踩的临期坑。
 keywords: 方便面,囤货,好价,康师傅,统一,白象,省钱
 categories:

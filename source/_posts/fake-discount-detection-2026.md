@@ -1,6 +1,7 @@
 ---
 title: 大促「先涨后降」怎么识别：三招拆穿假优惠
 date: 2026-10-03 09:30:00
+cover: /img/cover/cover-discount.jpg
 description: 不是所有五折都是五折。三招识别先涨价后降价、缩量不降价、凑单假优惠，附下单前的检查清单。
 keywords: 大促,假优惠,先涨后降,价保,凑单,省钱攻略
 categories:
