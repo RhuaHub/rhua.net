@@ -1063,6 +1063,8 @@ inject:
     # - <link rel="stylesheet" href="/xxx.css">
     # 首页头图：隐藏中央站名与社交图标；遮罩为上深下浅渐变（窄头图下已调轻，保证导航白字可读且画面不灰）；隐藏作者卡重复社交图标
     - '<style>#page-header.full_page #site-title{display:none}#page-header.full_page #site_social_icons{display:none}#page-header.full_page:before{background:linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,.06) 55%,rgba(0,0,0,.18) 100%)}.card-info-social-icons{display:none}</style>'
+    # 移动端对齐 PC：导航横排菜单（去掉汉堡抽屉）、头图换中央构图专用图
+    - '<style>@media (max-width:768px){#nav.hide-menu #toggle-menu{display:none!important}#nav.hide-menu .menus_items{display:inline-block!important}#blog-info{display:none}#menus{flex:1;display:flex;justify-content:space-evenly;align-items:center}#search-button .site-page span{display:none}.menus_item{display:inline-block}.menus_item .site-page{padding:0 5px;font-size:13.5px}#page-header.full_page{background-image:url(/img/hero-shopping-m.jpg)!important;background-attachment:scroll}}</style>'
   bottom:
     # - <script src="xxxx"></script>
 
