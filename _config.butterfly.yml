@@ -61,13 +61,22 @@ avatar:
   effect: false
 
 # Disable all banner images
-disable_top_img: false
+# 2026-10-04 按用户要求全站「只留导航条」：true 后所有页面 header 走 not-top-img 分支，
+# 统一为 60px 白色导航条（首页/关于/归档/标签/分类/文章页一致），不再渲染 banner 图与
+# 页面大标题。非文章页会保留一个被 CSS 隐藏的 <h1 class="title-seo"> 用于 SEO。
+# 想只恢复文章页头图：改回 false，并给文章的 front-matter 加 top_img（否则默认取 cover）。
+disable_top_img: true
 
 # If the banner of page not setting, it will show the default_top_img
 default_top_img:
 
 # The banner image of index page
-index_img: /img/hero-shopping-c.jpg
+# 2026-10-04 按用户要求去掉首页头图。设为 false 后主题走 not-top-img 分支：
+# 首页 header 不再渲染图片/大标题/箭头，直接变成一个 60px 的白色导航条。
+# 想恢复头图：把 false 改回 /img/hero-shopping-c.jpg，并在 inject.head 的媒体查询里
+# 补回 #page-header.full_page{height:36vh;background-image:url(/img/hero-shopping-m.jpg)!important}
+# （电脑/手机两张图都还在 source/img/，未删除）
+index_img: false
 
 # The banner image of archive page
 archive_img:
@@ -146,6 +155,7 @@ post_meta:
 # The position of site info, eg: 300px/300em/300rem/10%
 index_site_info_top:
 # The height of top_img, eg: 300px/300em/300rem
+# 首页头图已去掉（index_img: false），此项对首页不再生效，保留 45vh 便于日后恢复
 index_top_img_height: 45vh
 
 # The subtitle on homepage
@@ -266,7 +276,7 @@ footer:
     enable: true
     version: true
   # DISCLAIMER:BEGIN 由 tools/sync-disclaimer.py 从 DISCLAIMER.md 生成，请勿手改
-  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>华聚联盟只提供商品促销折扣信息，不参与商品的销售、发货与售后。商品的质量、库存与售后均由销售商家负责，购买前请自行核实，如有疑问请咨询销售商家。本站部分内容可能包含推广链接。若你通过此类链接下单，本站可能获得商家支付的佣金，但不会增加你的支出，也不影响你的购买价格与售后权益。</span>'
+  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>华聚联盟仅提供商品促销折扣信息，商品的销售、发货与售后均由商家负责。本站部分内容含推广链接，通过链接下单本站可能获得佣金，不会增加你的支出，也不影响售后。</span>'
   # DISCLAIMER:END
 
 # --------------------------------------
@@ -1061,11 +1071,10 @@ css_prefix: true
 inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
-    # 首页头图：隐藏中央站名与社交图标；遮罩为上深下浅渐变（窄头图下已调轻，保证导航白字可读且画面不灰）；隐藏作者卡重复社交图标
-    # 导航栏不再显示站点名「华聚联盟」（PC 与移动端统一），左侧留白、菜单保持右侧对齐
-    - '<style>.nav-site-title{display:none}#page-header.full_page #site-title{display:none}#page-header.full_page #site_social_icons{display:none}#page-header.full_page:before{background:linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,.06) 55%,rgba(0,0,0,.18) 100%)}.card-info-social-icons{display:none}</style>'
-    # 移动端对齐 PC：白底独立导航（不压头图、深色文字）、横排菜单单行不换行、头图更矮并换中央构图专用图
-    - '<style>@media (max-width:768px){#page-header.full_page #nav{position:relative;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}#page-header.full_page #nav a,#page-header.full_page #nav span.site-page,#page-header.full_page #nav .site-name{color:var(--font-color);text-shadow:none}#page-header.full_page:before{background:rgba(0,0,0,.10)}#nav.hide-menu #toggle-menu{display:none!important}#nav.hide-menu .menus_items{display:inline-block!important}#menus{flex:none;display:flex;justify-content:flex-end;align-items:center}#search-button .site-page span{display:none}.menus_item{display:inline-block}.menus_item .site-page i{display:none}.menus_item .site-page{padding:0 6px;font-size:13px}#page-header.full_page{height:36vh;background-image:url(/img/hero-shopping-m.jpg)!important;background-attachment:scroll}}</style>'
+    # 导航栏不显示站点名「华聚联盟」（PC 与移动端统一）；隐藏作者卡里重复的社交图标
+    - '<style>.nav-site-title{display:none}.card-info-social-icons{display:none}</style>'
+    # 移动端导航：白底实心、横排菜单单行不换行、深色文字（与 PC 同布局）
+    - '<style>@media (max-width:768px){#nav{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}#nav.hide-menu #toggle-menu{display:none!important}#nav.hide-menu .menus_items{display:inline-block!important}#menus{flex:none;display:flex;justify-content:flex-end;align-items:center}#search-button .site-page span{display:none}.menus_item{display:inline-block}.menus_item .site-page i{display:none}.menus_item .site-page{padding:0 6px;font-size:13px}}</style>'
   bottom:
     # - <script src="xxxx"></script>
 
