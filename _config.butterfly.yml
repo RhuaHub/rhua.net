@@ -48,16 +48,16 @@ code_blocks:
 #   icon: link || the description || color
 social:
   # 键是图标类名，值是「链接 || 悬浮提示 || 图标色」
-  fas fa-envelope: mailto:parit@sina.com || 邮箱 || '#4a7dbe'
+  fas fa-envelope: mailto:parit@sina.com || 邮箱 || '#B08D57'
 
 # --------------------------------------
 # Image Settings
 # --------------------------------------
 
-favicon: /img/favicon.ico
+favicon: /img/favicon-hua.ico
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/avatar-hua.webp
   effect: false
 
 # Disable all banner images
@@ -773,23 +773,24 @@ site_verification:
 # Theme color for customize
 # Notice: color value must in double quotes like "#000" or may cause error!
 
-# theme_color:
-#   enable: true
-#   main: "#49B1F5"
-#   paginator: "#00c4b6"
-#   button_hover: "#FF7242"
-#   text_selection: "#00c4b6"
-#   link_color: "#99a9bf"
-#   meta_color: "#858585"
-#   hr_color: "#A4D8FA"
-#   code_foreground: "#F47466"
-#   code_background: "rgba(27, 31, 35, .05)"
-#   toc_color: "#00c4b6"
-#   blockquote_padding_color: "#49b1f5"
-#   blockquote_background_color: "#49b1f5"
-#   scrollbar_color: "#49b1f5"
-#   meta_theme_color_light: "ffffff"
-#   meta_theme_color_dark: "#0d0d0d"
+# 2026-10-04 暖金主题色：呼应站点「華」书法徽章的金 / 米色调，替换主题默认蓝 #425AEF
+theme_color:
+  enable: true
+  main: "#B08D57"                        # 主色：古铜金（导航/链接悬停/卡片描边/标签/按钮）
+  paginator: "#C9A961"                   # 分页器：沙金
+  button_hover: "#8C6D3F"                # 按钮悬停：深铜
+  text_selection: "#E5D3A6"              # 文本选中底色：浅金
+  link_color: "#9A7638"                  # 正文链接：深金（保证白底可读，对比度 ~4.0）
+  meta_color: "#8A8175"                  # 文章元信息：暖灰
+  hr_color: "#C9AC7A"                    # 分割线 / hr 图标：沙金
+  code_foreground: "#9A5B2E"             # 行内代码文字：暖褐
+  code_background: "rgba(160, 120, 60, .07)"   # 行内代码底：暖调微染
+  toc_color: "#B08D57"                   # 目录高亮：古铜金
+  blockquote_padding_color: "#B08D57"    # 引用块左边线
+  blockquote_background_color: "#B08D57" # 引用块底色（主题自动取 10% 透明）
+  scrollbar_color: "#C9A961"             # 滚动条：沙金
+  meta_theme_color_light: "ffffff"
+  meta_theme_color_dark: "#0d0d0d"
 
 # The user interface setting of category and tag page
 # Choose: index - same as Homepage UI / default - same as archives UI
@@ -1013,7 +1014,7 @@ snackbar:
   enable: false
   position: bottom-left
   # The background color of Toast Notification in light mode and dark mode
-  bg_light: '#49b1f5'
+  bg_light: '#B08D57'
   bg_dark: '#1f1f1f'
 
 # Instant.page
