@@ -266,7 +266,7 @@ footer:
     enable: true
     version: true
   # DISCLAIMER:BEGIN 由 tools/sync-disclaimer.py 从 DISCLAIMER.md 生成，请勿手改
-  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>华聚联盟只提供商品促销折扣信息，销售及售后与本站无关，购买前请注意核实，如商品有疑问请咨询销售商家！</span>'
+  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>华聚联盟只提供商品促销折扣信息，不参与商品的销售、发货与售后。商品的质量、库存与售后均由销售商家负责，购买前请自行核实，如有疑问请咨询销售商家。本站部分内容可能包含推广链接。若你通过此类链接下单，本站可能获得商家支付的佣金，但不会增加你的支出，也不影响你的购买价格与售后权益。</span>'
   # DISCLAIMER:END
 
 # --------------------------------------
