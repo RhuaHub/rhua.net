@@ -3,11 +3,19 @@
 二维码与商品图沿用原图裁剪素材，保证二维码不变。"""
 from PIL import Image, ImageDraw, ImageFont
 import math
+import os
 
-QR = Image.open('qr.png')                      # 362x334 含白边
-PH = [Image.open(f'p{i}.png') for i in (1, 2, 3, 4)]
-OUT_STORY = 'jd_1fen_story.png'
-OUT_SQUARE = 'jd_1fen_square.png'
+# 路径基于脚本自身定位：在任何目录下都能运行
+HERE = os.path.dirname(os.path.abspath(__file__))
+GOODS = os.path.normpath(os.path.join(HERE, '..', 'source', 'img', 'goods'))
+
+QR = Image.open(os.path.join(HERE, 'qr.png'))   # 362x334 含白边
+# 商品图直接读站点图片目录，不再在 jd-promo/ 另存一份
+PH = [Image.open(os.path.join(GOODS, n)) for n in
+      ('tissue.png', 'eggs.png', 'detergent.png', 'tea.png')]
+# 成品直接写回站点图片目录，站点与素材只保留一份
+OUT_STORY = os.path.join(GOODS, 'promo-1fen-story.png')
+OUT_SQUARE = os.path.join(GOODS, 'promo-1fen-square.png')
 
 BG_RED  = (247, 37, 84)
 BG_DEEP = (232, 18, 66)

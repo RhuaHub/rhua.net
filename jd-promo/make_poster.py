@@ -2,9 +2,17 @@
 """京东一分购推广海报生成：复刻原版布局，二维码与商品图取自原图"""
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import math
+import os
 
-SRC = r'C:\Users\parit\.workbuddy\clipboard-images\clipboard-2026-10-03T07-06-24-216Z-e07ff126.jpg'
-OUT = 'jd_1fen_poster.png'
+# 海报原图不在仓库内：可用环境变量 RHUA_POSTER_SRC 指定，默认取本机剪贴板缓存
+SRC = os.environ.get(
+    'RHUA_POSTER_SRC',
+    r'C:\Users\parit\.workbuddy\clipboard-images\clipboard-2026-10-03T07-06-24-216Z-e07ff126.jpg',
+)
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'jd_1fen_poster.png')
+
+if not os.path.exists(SRC):
+    raise SystemExit('找不到海报原图：%s\n请设置环境变量 RHUA_POSTER_SRC 指向原图后再运行。' % SRC)
 W, H = 864, 1600
 
 # ---------- 颜色 ----------
