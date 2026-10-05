@@ -62,3 +62,48 @@
         });
     }
 })();
+
+/**
+ * 复制按钮：页面里任意 [data-copy="#选择器"] 的元素，点击即复制对应输入框的内容。
+ * 用于渠道页的「复制本渠道链接」，方便分发时不手工输入。
+ */
+(function () {
+    'use strict';
+
+    function flash(el, ok) {
+        if (!el) return;
+        el.textContent = ok ? '已复制 ✓' : '复制失败，请手动选中复制';
+        setTimeout(function () { el.textContent = ''; }, 2000);
+    }
+
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest && e.target.closest('[data-copy]');
+        if (!btn) return;
+        e.preventDefault();
+
+        var target = document.querySelector(btn.getAttribute('data-copy'));
+        if (!target) return;
+        var text = (target.value != null ? target.value : target.textContent).trim();
+        var okEl = document.getElementById('rhua-share-ok');
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(function () {
+                flash(okEl, true);
+            }, function () {
+                fallback(target, okEl);
+            });
+        } else {
+            fallback(target, okEl);
+        }
+    });
+
+    function fallback(target, okEl) {
+        try {
+            if (target.select) target.select();
+            var ok = document.execCommand && document.execCommand('copy');
+            flash(okEl, !!ok);
+        } catch (err) {
+            flash(okEl, false);
+        }
+    }
+})();

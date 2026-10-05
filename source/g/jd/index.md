@@ -1,6 +1,7 @@
 ---
 title: 好物清单
 channel: jd
+sitemap: false
 date: 2026-10-05 15:00:00
 ---
 

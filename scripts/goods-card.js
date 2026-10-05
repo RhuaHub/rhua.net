@@ -166,7 +166,17 @@ const CSS = `
 .goods-promo{margin:22px 0;text-align:center}
 .goods-promo img{max-width:420px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
 .goods-promo__hint{font-size:12px;color:#9a9a9a;margin-top:8px}
-@media screen and (max-width:640px){.goods-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.goods-card__price{font-size:19px}.goods-promo img{max-width:100%}}
+.goods-share{margin:26px 0;padding:16px 18px;border:1px solid rgba(176,141,87,.35);border-radius:12px;background:#fdfbf6}
+.goods-share h3{font-size:15px;margin:0 0 4px;color:#7a5b1e}
+.goods-share__desc{font-size:13px;color:#8a8175;margin:0 0 14px;line-height:1.6}
+.goods-share textarea{width:100%;box-sizing:border-box;font-size:12px;line-height:1.5;color:#5a5a5a;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:9px 11px;resize:vertical;min-height:64px;font-family:inherit}
+.goods-share__row{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.goods-share__btn{cursor:pointer;border:0;border-radius:8px;padding:9px 16px;font-size:14px;font-weight:500;background:#b08d57;color:#fff !important;text-decoration:none}
+.goods-share__btn:hover{background:#8c6d3f}
+.goods-share__btn.is-secondary{background:#f1efec;color:#6b6b6b !important}
+.goods-share__btn.is-secondary:hover{background:#e5e2dd}
+.goods-share__ok{font-size:13px;color:#2e7d32;min-height:18px;line-height:18px}
+@media screen and (max-width:640px){.goods-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.goods-card__price{font-size:19px}.goods-promo img{max-width:100%}.goods-share{padding:14px}}
 `;
 
 hexo.extend.filter.register('after_render:html', function (str, data) {
@@ -176,8 +186,9 @@ hexo.extend.filter.register('after_render:html', function (str, data) {
     if (str.indexOf('goods-grid') >= 0) {
         head.push('<style id="rhua-goods-style">' + CSS + '</style>');
     }
-    // 渠道落地页（/g/xxx/）内容与 /goods/ 相同，标 noindex 避免重复内容
-    if (page.channel) {
+    // 渠道落地页（/g/xxx/）内容与 /goods/ 相同，标 noindex 避免重复内容；
+    // /promo/ 是自用分发台，同样不该被收录
+    if (page.channel || page.noindex) {
         head.push('<meta name="robots" content="noindex,follow">');
     }
     // Cloudflare Web Analytics（在 _config.yml 的 affiliate.cf_analytics_token 填令牌后自动生效）
