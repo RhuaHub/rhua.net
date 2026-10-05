@@ -1,0 +1,63 @@
+# 好物清单数据源
+# ---------------------------------------------------------------------------
+# 页面上的商品卡全部由本文件生成（scripts/goods-card.js 里的 {% goodslist %} 标签）。
+# 改价格、换商品、上下架，只改这里，不用动页面。
+#
+# url        ：你的联盟推广链接（京东联盟/多多进宝/淘宝联盟后台生成）
+#              ⚠️ 必须换成自己的，否则佣金结算到别人账上
+# price      ：当前售价，页面上会展示
+# price_from ：划线原价，可留空
+# updated    ：价格核对日期（YYYY-MM-DD），页面会显示「价格核对于 X」
+#              ⚠️ 联盟价格变动频繁，务必定期重核，过期价格会被投诉
+# commission ：佣金率，仅内部记录，页面不展示
+# note       ：一句话真实评价（建议写缺点，符合本站「先讲缺点」原则）
+# groups     ：一个分组 = 页面上的一个板块，可自由增删
+# ---------------------------------------------------------------------------
+
+groups:
+  - name: 京东一分购
+    note: 1分购仅限京东新用户及 365 天未下单用户，每人一次机会，以活动页面为准。
+    items:
+      - name: 加厚原木餐巾纸 10包（家庭装）
+        img: /img/goods/tissue.png
+        platform: 京东
+        price: '0.01'
+        price_from: '39.9'
+        url: https://u.jd.com/REPLACE_ME_JD
+        commission: '20%'
+        updated: '2026-10-05'
+        note: 厚度一般，胜在量大管够，日常擦手擦桌子够用。
+        tags: [一分购, 日用]
+
+      - name: 农家散养土鸡蛋 10枚
+        img: /img/goods/eggs.png
+        platform: 京东
+        price: '0.01'
+        price_from: '29.9'
+        url: https://u.jd.com/REPLACE_ME_JD
+        commission: '20%'
+        updated: '2026-10-05'
+        note: 蛋个头偏小，胜在新鲜，运输偶有破壳可申请售后。
+        tags: [一分购, 生鲜]
+
+      - name: 蓝月亮深层洁净洗衣液 500g/瓶
+        img: /img/goods/detergent.png
+        platform: 京东
+        price: '0.01'
+        price_from: '19.9'
+        url: https://u.jd.com/REPLACE_ME_JD
+        commission: '20%'
+        updated: '2026-10-05'
+        note: 500g 是小瓶装，按次用量算单价不算最低，胜在免运费。
+        tags: [一分购, 家清]
+
+      - name: 康师傅冰红茶饮料 330ml*6瓶
+        img: /img/goods/tea.png
+        platform: 京东
+        price: '0.01'
+        price_from: '24.9'
+        url: https://u.jd.com/REPLACE_ME_JD
+        commission: '20%'
+        updated: '2026-10-05'
+        note: 含糖饮料，控糖人群绕道；整箱运输较重，介意者慎拍。
+        tags: [一分购, 食品]
