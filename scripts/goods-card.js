@@ -163,7 +163,10 @@ const CSS = `
 .goods-card__cta{display:block;text-align:center;margin-top:auto;padding:9px 12px;border-radius:8px;background:#e1251b;color:#fff !important;font-size:14px;font-weight:500;text-decoration:none !important}
 .goods-card__cta:hover{background:#c4201a}
 .goods-ad{font-size:12px;color:#9a9a9a;line-height:1.6;margin:26px 0 0;padding-top:14px;border-top:1px solid rgba(0,0,0,.06)}
-@media screen and (max-width:640px){.goods-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.goods-card__price{font-size:19px}}
+.goods-promo{margin:22px 0;text-align:center}
+.goods-promo img{max-width:420px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.goods-promo__hint{font-size:12px;color:#9a9a9a;margin-top:8px}
+@media screen and (max-width:640px){.goods-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.goods-card__price{font-size:19px}.goods-promo img{max-width:100%}}
 `;
 
 hexo.extend.filter.register('after_render:html', function (str, data) {
