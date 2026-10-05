@@ -21,3 +21,7 @@ _admin-config.yml
 /docs/
 nav-data.json
 pulsedeck-backup-*.zip
+
+# 私有推广素材：含推广归因参数的二维码（inviterId / riskEncryptPin），绝不入库
+# 实体文件存放在仓库外：C:/Users/parit/WorkBuddy/_rhua-private/jd-promo/qr.png
+jd-promo/qr.png

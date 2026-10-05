@@ -9,7 +9,23 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 GOODS = os.path.normpath(os.path.join(HERE, '..', 'source', 'img', 'goods'))
 
-QR = Image.open(os.path.join(HERE, 'qr.png'))   # 362x334 含白边
+# 二维码不在仓库内（含推广归因参数 inviterId / riskEncryptPin），绝不入库。
+# 按优先级查找：1) 环境变量 JD_QR_PATH；2) 仓库外私有目录；3) 仓库内 jd-promo/qr.png（旧布局兼容）
+def _find_qr():
+    here = os.path.dirname(os.path.abspath(__file__))
+    private = os.path.normpath(os.path.join(here, '..', '..', '_rhua-private', 'jd-promo', 'qr.png'))
+    cands = [os.environ.get('JD_QR_PATH'), private, os.path.join(here, 'qr.png')]
+    for p in cands:
+        if p and os.path.exists(p):
+            return p
+    raise SystemExit(
+        '找不到推广二维码 qr.png（含推广归因参数，已移出仓库）。\n'
+        '请用以下任一方式提供：\n'
+        '  1) 设置环境变量 JD_QR_PATH 指向二维码图片；\n'
+        '  2) 把图片放到：%s' % private
+    )
+
+QR = Image.open(_find_qr())   # 362x334 含白边
 # 商品图直接读站点图片目录，不再在 jd-promo/ 另存一份
 PH = [Image.open(os.path.join(GOODS, n)) for n in
       ('tissue.png', 'eggs.png', 'detergent.png', 'tea.png')]
