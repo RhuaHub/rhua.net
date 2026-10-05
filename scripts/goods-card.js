@@ -10,7 +10,8 @@
  *   2. 展示「价格核对于 YYYY-MM-DD」，避免过期价格引起的投诉
  *   3. 输出 Product / Offer 结构化数据，有机会吃到搜索的商品富摘要
  *   4. 页面底部自动生成「广告声明」，标注含推广链接
- *   5. 数据里的 url 若仍是占位符，卡片会显示「待配置链接」而不是死链
+ *   5. 数据里的 url 若仍是占位符，卡片不渲染按钮（不留死链、不在页面上暴露开发提示），
+ *      仅在构建日志里 warn 提醒站长去 goods.yml 配置联盟链接
  */
 
 'use strict';
@@ -60,7 +61,7 @@ function renderCard(item) {
         ? `<a class="goods-card__cta" href="${esc(item.url)}" target="_blank"
               rel="sponsored nofollow noopener" data-cta="1"
               data-sku="${esc(item.name)}">去看看 →</a>`
-        : `<span class="goods-card__cta is-disabled">待配置推广链接</span>`;
+        : '';
 
     return `
 <article class="goods-card" data-sku="${esc(item.name)}">
@@ -80,7 +81,8 @@ function renderCard(item) {
 }
 
 function renderJsonLd(items) {
-    const list = items.filter(isConfigured).map((it, i) => ({
+    // 注意：filter 回调收到的是商品对象，必须取 .url 再判断，否则占位链接也会进结构化数据
+    const list = items.filter(it => isConfigured(it.url)).map((it, i) => ({
         '@type': 'ListItem',
         position: i + 1,
         item: {
@@ -125,14 +127,16 @@ ${cards}
     });
 
     const all = groups.reduce((a, g) => a.concat(g.items || []), []);
-    const warn = pending.length
-        ? `<div class="goods-warn">有 ${pending.length} 件商品的推广链接还是占位符
-           （<code>REPLACE_ME</code>），请到 <code>source/_data/goods.yml</code> 里换成你的联盟链接，否则不会产生佣金。</div>`
-        : '';
+    // 未配置链接的商品只在构建日志里提醒，不渲染到公开页面
+    if (pending.length) {
+        hexo.log.warn('[goods-card] 有 %d 件商品的推广链接还是占位符（REPLACE_ME）：%s\n' +
+            '  请到 source/_data/goods.yml 里换成你的联盟链接，否则不会产生佣金。',
+            pending.length, pending.join('、'));
+    }
     const ad = `<p class="goods-ad">广告声明：本页部分链接为推广链接，你通过链接下单，本站可能获得佣金，
         不影响你的实际支付价格，也不影响我们的推荐结论。</p>`;
 
-    return `${warn}${blocks.join('\n')}${renderJsonLd(all)}${ad}`;
+    return `${blocks.join('\n')}${renderJsonLd(all)}${ad}`;
 });
 
 /* ---------------- 样式：只在含商品卡的页面注入 ---------------- */
@@ -158,14 +162,8 @@ const CSS = `
 .goods-card__note{font-size:13px;color:#6b6b6b;line-height:1.6;margin:10px 0 0}
 .goods-card__cta{display:block;text-align:center;margin-top:auto;padding:9px 12px;border-radius:8px;background:#e1251b;color:#fff !important;font-size:14px;font-weight:500;text-decoration:none !important}
 .goods-card__cta:hover{background:#c4201a}
-.goods-card__cta.is-disabled{background:#e8e6e3;color:#9a9a9a !important;cursor:not-allowed}
-.goods-warn{border-left:3px solid #e8a33d;background:#fdf6e9;padding:10px 14px;border-radius:6px;font-size:13px;color:#7a5b1e;margin:18px 0}
-.goods-warn code{background:rgba(0,0,0,.06);padding:1px 4px;border-radius:3px}
 .goods-ad{font-size:12px;color:#9a9a9a;line-height:1.6;margin:26px 0 0;padding-top:14px;border-top:1px solid rgba(0,0,0,.06)}
-.goods-promo{margin:22px 0;text-align:center}
-.goods-promo img{max-width:420px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
-.goods-promo__hint{font-size:12px;color:#9a9a9a;margin-top:8px}
-@media screen and (max-width:640px){.goods-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.goods-card__price{font-size:19px}.goods-promo img{max-width:100%}}
+@media screen and (max-width:640px){.goods-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.goods-card__price{font-size:19px}}
 `;
 
 hexo.extend.filter.register('after_render:html', function (str, data) {
