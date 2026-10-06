@@ -31,9 +31,7 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
-# 商品清单（好物带货）
-## 数据在 source/_data/goods.yml，页面里用 {% goodslist %} 渲染
-## 组件实现：scripts/goods-card.js
+# 推广统计
 affiliate:
   # Cloudflare Web Analytics 令牌：Cloudflare 面板 → Web Analytics → 添加站点 rhua.net
   # 复制令牌填这里，各页自动注入统计脚本；留空则完全不加载任何第三方请求
