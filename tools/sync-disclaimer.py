@@ -45,7 +45,7 @@ DEFAULT_SINCE = "2026 年 10 月 2 日"
 PAGE_TEMPLATE = """---
 title: 免责声明
 date: {date}
-description: 华聚联盟免责声明：本站只提供商品促销折扣信息，销售及售后与本站无关。
+description: 本站免责声明：只提供商品促销折扣信息，销售及售后与本站无关；不挂推广链接。
 ---
 
 {before}

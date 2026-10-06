@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 华聚联盟
-subtitle: '好物推荐 · 实测对比 · 省钱攻略'
-description: '华聚联盟 —— 一个认真挑东西的地方：先讲缺点，再说值不值得买。'
-keywords: 华聚联盟,RhuaHub,好物推荐,测评,实测对比,选购攻略,省钱攻略
+title: NAS 选型笔记
+subtitle: '成品 NAS · 私有云 · 家庭存储，只讲怎么选'
+description: 'NAS 选型笔记 —— 成品 NAS 与私有云选购参考：先讲清楚哪些人不该买，再比价格、盘位、系统与售后。'
+keywords: NAS,NAS选购,成品NAS,私有云,家庭存储,网络存储,群晖,威联通,绿联,极空间,NAS选型笔记
 author: Joey
 language: zh-CN
 timezone: 'Asia/Shanghai'
