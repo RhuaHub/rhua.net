@@ -75,7 +75,7 @@ default_top_img:
 # 首页 header 不再渲染图片/大标题/箭头，直接变成一个 60px 的白色导航条。
 # 想恢复头图：把 false 改回 /img/hero-shopping-c.jpg，并在 inject.head 的媒体查询里
 # 补回 #page-header.full_page{height:36vh;background-image:url(/img/hero-shopping-m.jpg)!important}
-# （电脑/手机两张图都还在 source/img/，未删除）
+# （两张原图已于 2026-10-06 从仓库删除；需要时从 git 历史取回：git checkout fea87d0 -- source/img/）
 index_img: false
 
 # The banner image of archive page
