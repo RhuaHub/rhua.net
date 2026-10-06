@@ -23,4 +23,4 @@ date: 2026-10-05 15:00:00
   </div>
 </div>
 
-<p class="goods-ad" style="border:0;padding:0;margin-top:20px">价格核对于 2026-10-05，以商品页为准。本站含推广链接，你下单我们可能获得佣金，不影响你的支付价格。</p>
+<p class="goods-ad" style="border:0;padding:0;margin-top:20px">价格核对于 2026-10-05，以商品页为准。本站不直接挂推广链接，推广链接仅在社交渠道投放。</p>

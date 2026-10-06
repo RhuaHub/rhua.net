@@ -5,13 +5,14 @@
  *   {% goodslist %}              渲染 source/_data/goods.yml 里的全部分组
  *   {% goodslist 京东一分购 %}    只渲染指定分组
  *
- * 组件设计要点（也是合规要点）：
- *   1. 外链一律 rel="sponsored nofollow noopener"，符合搜索引擎对联盟链接的要求
+ * 组件设计要点：
+ *   1. ⚠️ 本站**不挂联盟外链**：京东联盟「网站推广」渠道要求站点 ICP 备案，
+ *      本站托管于 Cloudflare（境外、无备案），挂外链属平台风控点、佣金可能不结算。
+ *      故卡片只做展示 + 搜索引导，成交走社交渠道里投放的推广链接（导购媒体推广，无需备案）。
  *   2. 展示「价格核对于 YYYY-MM-DD」，避免过期价格引起的投诉
- *   3. 输出 Product / Offer 结构化数据，有机会吃到搜索的商品富摘要
- *   4. 页面底部自动生成「广告声明」，标注含推广链接
- *   5. 数据里的 url 若仍是占位符，卡片不渲染按钮（不留死链、不在页面上暴露开发提示），
- *      仅在构建日志里 warn 提醒站长去 goods.yml 配置联盟链接
+ *   3. 输出 Product / Offer 结构化数据（刻意不含 offers.url），有机会吃到商品富摘要
+ *   4. 页面底部自动生成合规声明
+ *   5. goods.yml 里的 url 字段当前仅作内部记录，不再渲染到页面
  */
 
 'use strict';
@@ -57,11 +58,10 @@ function renderCard(item) {
         ? `<p class="goods-card__note">${esc(item.note)}</p>` : '';
     const updated = item.updated
         ? `价格核对于 ${esc(item.updated)}` : '价格以商品页为准';
-    const cta = ok
-        ? `<a class="goods-card__cta" href="${esc(item.url)}" target="_blank"
-              rel="sponsored nofollow noopener" data-cta="1"
-              data-sku="${esc(item.name)}">去看看 →</a>`
-        : '';
+    // ⚠️ 本站不挂联盟外链：京东联盟的「网站推广」渠道要求站点完成 ICP 备案，
+    //    本站托管于 Cloudflare（境外、无备案），挂外链属平台风控点，佣金可能不结算。
+    //    因此卡片只做展示与搜索引导，成交走社交渠道里投放的推广链接。
+    const cta = `<p class="goods-card__cta-hint" data-sku="${esc(item.name)}">在京东搜索「${esc(item.short || item.name)}」即可找到</p>`;
 
     return `
 <article class="goods-card" data-sku="${esc(item.name)}">
@@ -81,8 +81,9 @@ function renderCard(item) {
 }
 
 function renderJsonLd(items) {
-    // 注意：filter 回调收到的是商品对象，必须取 .url 再判断，否则占位链接也会进结构化数据
-    const list = items.filter(it => isConfigured(it.url)).map((it, i) => ({
+    // 结构化数据里刻意不输出 offers.url：本站不挂联盟外链（见文件头说明），
+    // 没有可公开的商品链接，输出 url 只会写进未备案/占位地址。
+    const list = items.map((it, i) => ({
         '@type': 'ListItem',
         position: i + 1,
         item: {
@@ -95,7 +96,6 @@ function renderJsonLd(items) {
                 price: String(it.price).replace(/[^\d.]/g, '') || '0',
                 priceCurrency: 'CNY',
                 availability: 'https://schema.org/InStock',
-                url: it.url,
                 priceValidUntil: it.updated || ''
             }
         }
@@ -127,14 +127,14 @@ ${cards}
     });
 
     const all = groups.reduce((a, g) => a.concat(g.items || []), []);
-    // 未配置链接的商品只在构建日志里提醒，不渲染到公开页面
+    // url 字段当前不再渲染到页面（本站不挂联盟外链），仅在构建日志里提示，
+    // 方便日后若恢复挂链时自查哪些商品还没配真实链接
     if (pending.length) {
-        hexo.log.warn('[goods-card] 有 %d 件商品的推广链接还是占位符（REPLACE_ME）：%s\n' +
-            '  请到 source/_data/goods.yml 里换成你的联盟链接，否则不会产生佣金。',
+        hexo.log.info('[goods-card] %d 件商品的 url 仍是占位符：%s',
             pending.length, pending.join('、'));
     }
-    const ad = `<p class="goods-ad">广告声明：本页部分链接为推广链接，你通过链接下单，本站可能获得佣金，
-        不影响你的实际支付价格，也不影响我们的推荐结论。</p>`;
+    const ad = `<p class="goods-ad">说明：本站不直接挂推广链接，页面价格为人工核对的时点价。
+        推广链接仅在微信群、朋友圈等社交渠道投放，通过那些链接下单本站可能获得佣金，不影响你的支付价格。</p>`;
 
     return `${blocks.join('\n')}${renderJsonLd(all)}${ad}`;
 });
@@ -160,8 +160,7 @@ const CSS = `
 .goods-card__was{font-size:13px;font-weight:400;color:#a8a8a8;margin-left:8px}
 .goods-card__meta{font-size:12px;color:#9a9a9a;margin-top:4px}
 .goods-card__note{font-size:13px;color:#6b6b6b;line-height:1.6;margin:10px 0 0}
-.goods-card__cta{display:block;text-align:center;margin-top:auto;padding:9px 12px;border-radius:8px;background:#e1251b;color:#fff !important;font-size:14px;font-weight:500;text-decoration:none !important}
-.goods-card__cta:hover{background:#c4201a}
+.goods-card__cta-hint{margin:auto 0 0;padding-top:10px;font-size:12px;line-height:1.5;color:#8a8175;border-top:1px dashed rgba(176,141,87,.35)}
 .goods-ad{font-size:12px;color:#9a9a9a;line-height:1.6;margin:26px 0 0;padding-top:14px;border-top:1px solid rgba(0,0,0,.06)}
 .goods-promo{margin:22px 0;text-align:center}
 .goods-promo img{max-width:420px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
