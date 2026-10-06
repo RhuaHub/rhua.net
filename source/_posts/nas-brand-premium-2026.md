@@ -1,6 +1,7 @@
 ---
 title: 成品 NAS 为什么贵两三倍：溢价到底买了什么
 date: 2026-10-06 21:20:00
+cover: /img/cover/cover-brand-premium.jpg
 description: 群晖比国产 NAS 贵两千块，多出来的钱买了什么？系统生态、安全更新、售后与省心——以及这四样分别在什么情况下值、什么情况下不值。
 keywords: 群晖,威联通,绿联,极空间,NAS系统,NAS溢价,DSM,UGOS,ZOS,NAS品牌对比
 categories:

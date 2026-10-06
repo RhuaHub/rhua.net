@@ -103,6 +103,17 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: butterfly
 
+# 文章末尾引导组件（由 scripts/post-cta.js 注入，仅作用于文章，不含 about / disclaimer 等页面）
+# 改这里就能改文案与按钮，不用改代码；enable: false 则整站不渲染
+post_cta:
+  enable: true
+  title: 还有拿不准的地方？
+  desc: 同一台机器在不同家里结论不一样 —— 盘位、网口、预算，哪个是你的卡点，说出来我帮你排。
+  qr: '' # 拿到公众号二维码后填 /img/xxx.jpg，留空则不显示二维码
+  qr_alt: ''
+  button_text: 给我发邮件
+  button_url: 'mailto:parit@sina.com'
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
