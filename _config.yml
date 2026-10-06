@@ -31,11 +31,9 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
-# 推广统计
-affiliate:
-  # Cloudflare Web Analytics 令牌：Cloudflare 面板 → Web Analytics → 添加站点 rhua.net
-  # 复制令牌填这里，各页自动注入统计脚本；留空则完全不加载任何第三方请求
-  cf_analytics_token: ''
+# 访问统计
+# Cloudflare Web Analytics 令牌配置在 _config.butterfly.yml 的 cloudflare_analytics
+# （Butterfly 主题原生支持，自动注入 beacon 脚本；留空则完全不加载任何第三方请求）
 
 # Writing
 new_post_name: :title.md # File name of new posts
