@@ -128,15 +128,7 @@ Page({
 
     // 盘位：2026 年的立场是至少 4 盘位
     let bays = 4
-    let usablePerDisk = 0
-    if (need <= 8) {
-      bays = 4
-      usablePerDisk = Math.ceil(need / 3 * 10) / 10 // RAID5 四盘用三块
-    } else if (need <= 24) {
-      bays = 4
-    } else {
-      bays = 6
-    }
+    if (need > 24) bays = 6
 
     // 硬盘方案（RAID 5：n 块盘可用 n-1 块）
     const perDisk = this.pickDiskSize(need, bays)
@@ -155,7 +147,9 @@ Page({
     if (has('video')) {
       warnings.push('影音转码认准 Intel 核显（如 N100 的 QuickSync），ARM 机型软转码基本跑不动 4K。')
     }
-    if (bays === 6) {
+    if (bays === 6 && budget <= 2800) {
+      warnings.push('算出来需要 6 盘位，但你的预算档里基本都是 4 盘位机型 —— 6 盘位整机通常 ¥3000 起步。要么提高预算，要么先把单盘容量买大（4 盘位 × 12TB 也能到 36TB）。')
+    } else if (bays === 6) {
       warnings.push('你的容量需求已经超出 4 盘位的舒适区，直接看 6 盘位，别买 4 盘位再换整机。')
     }
     warnings.push('进 RAID 的硬盘一律选 CMR，SMR 再便宜都不要 —— 它在重建阵列时可能掉到 10MB/s，甚至被踢出阵列。')
