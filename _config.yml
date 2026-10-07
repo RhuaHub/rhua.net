@@ -108,11 +108,11 @@ theme: butterfly
 post_cta:
   enable: true
   title: 还有拿不准的地方？
-  desc: 同一台机器在不同家里结论不一样 —— 盘位、网口、预算，哪个是你的卡点，说出来我帮你排。
-  qr: '' # 拿到公众号二维码后填 /img/xxx.jpg，留空则不显示二维码
-  qr_alt: ''
-  button_text: 给我发邮件
-  button_url: 'mailto:parit@sina.com'
+  desc: 微信扫码关注公众号，或直接搜一搜「Rhua NAS」—— 盘位、网口、预算，说说你的情况，我帮你排。
+  qr: /img/qr-wechat.jpg # 公众号「Rhua NAS」关注码，裁自微信搜一搜官方物料（400x400，46KB）
+  qr_alt: 微信扫码关注公众号 Rhua NAS
+  button_text: '' # 公众号没有落地链接，按钮留空即不渲染；兜底邮箱见侧栏与 /about/
+  button_url: ''
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
