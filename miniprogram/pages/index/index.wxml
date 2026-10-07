@@ -1,0 +1,130 @@
+<view class="page">
+
+  <view class="hero">
+    <view class="hero-title">NAS 选型计算器</view>
+    <view class="hero-sub">回答 4 个问题，直接给出档位、盘位和硬盘方案</view>
+  </view>
+
+  <!-- 问题 1：用途 -->
+  <view class="card">
+    <view class="q-title">1. 你主要拿来做什么<text class="q-hint">（可多选）</text></view>
+    <view class="opt-grid">
+      <view
+        wx:for="{{usageList}}"
+        wx:key="key"
+        class="opt {{item.checked ? 'on' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="toggleUsage">
+        <view class="opt-label">{{item.label}}</view>
+        <view class="opt-hint">{{item.hint}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 问题 2：现有数据量 -->
+  <view class="card">
+    <view class="q-title">2. 现在大概有多少数据</view>
+    <view class="opt-row">
+      <view
+        wx:for="{{dataOpts}}"
+        wx:key="v"
+        class="chip {{dataIdx === index ? 'on' : ''}}"
+        data-field="dataIdx"
+        data-idx="{{index}}"
+        bindtap="pick">{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- 问题 3：增长速度 -->
+  <view class="card">
+    <view class="q-title">3. 数据增长有多快</view>
+    <view class="opt-row">
+      <view
+        wx:for="{{growthOpts}}"
+        wx:key="v"
+        class="chip {{growthIdx === index ? 'on' : ''}}"
+        data-field="growthIdx"
+        data-idx="{{index}}"
+        bindtap="pick">{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- 问题 4：预算 -->
+  <view class="card">
+    <view class="q-title">4. 机器预算<text class="q-hint">（不含硬盘）</text></view>
+    <view class="opt-row">
+      <view
+        wx:for="{{budgetOpts}}"
+        wx:key="v"
+        class="chip {{budgetIdx === index ? 'on' : ''}}"
+        data-field="budgetIdx"
+        data-idx="{{index}}"
+        bindtap="pick">{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="btn-row">
+    <view class="btn ghost" bindtap="reset">重填</view>
+    <view class="btn primary" bindtap="compute">算出我该买哪档</view>
+  </view>
+
+  <!-- 结果 -->
+  <view id="result" wx:if="{{result}}" class="result">
+    <view class="result-head">给你的结论</view>
+
+    <view class="r-card">
+      <view class="r-label">预算档位</view>
+      <view class="r-value">{{result.tier.name}}</view>
+      <view class="r-meta">{{result.tier.range}}</view>
+      <view class="r-note">{{result.tier.note}}</view>
+      <view class="r-models">
+        <view wx:for="{{result.tier.models}}" wx:key="*this" class="r-model">· {{item}}</view>
+      </view>
+    </view>
+
+    <view class="r-row">
+      <view class="r-cell">
+        <view class="r-label">盘位</view>
+        <view class="r-value sm">{{result.bays}} 盘位</view>
+        <view class="r-note">RAID 5 下可用约 {{result.usable}}TB</view>
+      </view>
+      <view class="r-cell">
+        <view class="r-label">单盘容量</view>
+        <view class="r-value sm">{{result.perDisk}}TB × {{result.bays}}</view>
+        <view class="r-note">硬盘预算约 ¥{{result.hddBudget}}</view>
+      </view>
+    </view>
+
+    <view class="r-card">
+      <view class="r-label">为什么是这个盘位</view>
+      <view class="r-note">
+        按你填的数据，三年后大约需要 {{result.need}}TB。{{result.bays}} 盘位走 RAID 5，
+        买 {{result.perDisk}}TB 的盘可用约 {{result.usable}}TB —— 留出增长余量，不用两年就换整机。
+      </view>
+    </view>
+
+    <view class="r-card warn">
+      <view class="r-label">下单前必看</view>
+      <view wx:for="{{result.warnings}}" wx:key="*this" class="warn-item">{{index + 1}}. {{item}}</view>
+    </view>
+
+    <view class="r-card subtle">
+      <view class="r-note">
+        价格为 {{result.priceDate}} 核对的公开渠道参考价，促销与国补会让到手价更低，下单前请自己再核一遍。
+      </view>
+    </view>
+  </view>
+
+  <!-- 引导 -->
+  <official-account wx:if="{{result}}"></official-account>
+
+  <view class="follow">
+    <view class="follow-title">还有拿不准的？</view>
+    <view class="follow-desc">
+      微信搜一搜「Rhua NAS」关注公众号，或直接发邮件聊聊你的情况。
+    </view>
+    <view class="follow-desc dim">邮箱 parit@sina.com</view>
+    <view class="btn ghost sm" bindtap="goAbout">关于与免责声明</view>
+  </view>
+
+</view>

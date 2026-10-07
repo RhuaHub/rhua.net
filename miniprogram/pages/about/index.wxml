@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="card">
+    <view class="h">这个计算器怎么算的</view>
+    <view class="p">
+      它不做推荐排序，只做三件事：按你填的数据量估算三年后的容量需求，据此给出盘位和单盘容量，
+      再按预算给出对应的价位档。
+    </view>
+    <view class="p">
+      盘位按 RAID 5 计算（n 块盘可用 n-1 块）。这是家用最常见的折中：比 RAID 1 省容量，
+      又允许坏一块盘不丢数据。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="h">价格与免责</view>
+    <view class="p">
+      机型价格为 2026-10-07 核对的公开渠道参考价，促销与国补会让到手价更低。
+      本工具只用来判断档位差，下单前请自己再核一遍。
+    </view>
+    <view class="p">
+      本站不挂任何推广链接，也不从任何品牌获得赞助；商品的销售、发货与售后均由商家负责。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="h">关于数据</view>
+    <view class="p">
+      所有计算都在你的手机上完成，不联网、不上传、不收集任何信息。
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="h">联系</view>
+    <view class="p">邮箱 parit@sina.com</view>
+    <view class="p">公众号：微信搜一搜「Rhua NAS」</view>
+  </view>
+</view>
