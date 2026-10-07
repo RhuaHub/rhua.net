@@ -120,9 +120,10 @@ error_img:
   post_page: /img/404.jpg
 
 # A simple 404 page
+# 开启原因：删掉 29 篇旧文章后，它们的 URL 会 404，需要一个有引导的兜底页
 error_404:
-  enable: false
-  subtitle: 'Page Not Found'
+  enable: true
+  subtitle: '这个页面不在了 —— 我们删掉了一批跟 NAS 无关的内容'
   background: /img/error-page.png
 
 post_meta:
@@ -273,7 +274,10 @@ footer:
     since: 2025
   # Copyright of theme and framework
   copyright:
-    enable: true
+    # 关闭：该段会输出「框架 Hexo | 主题 Butterfly」两个外链，其中主题链接指向 GitHub。
+    # 本站对外联系方式统一为邮箱，不出现 GitHub 链接，避免被误认为站长的账号。
+    # 关闭后页脚保留「© 2025 - 2026 By Joey」+ 免责声明两行
+    enable: false
     version: true
   # DISCLAIMER:BEGIN 由 tools/sync-disclaimer.py 从 DISCLAIMER.md 生成，请勿手改
   custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>本站仅提供商品促销折扣信息，商品的销售、发货与售后均由商家负责。本站不挂任何推广链接，推广入口仅在社交渠道投放；页面价格为人工核对的时点价，实际以商品页为准。</span>'
@@ -530,7 +534,8 @@ share:
   # Share.js
   # https://github.com/overtrue/share.js
   sharejs:
-    sites: facebook,x,wechat,weibo,qq
+    # 只留国内常用的三个；facebook / x 对本站访客是噪音
+    sites: wechat,qq,weibo
 
   # AddToAny
   # https://www.addtoany.com/
@@ -1029,9 +1034,10 @@ instantpage: false
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: false
-  # Use browser's native lazyload instead of vanilla-lazyload
-  native: false
+  # 开启：首页 7 张封面（各 100-165KB）不再全部抢占首屏带宽
+  enable: true
+  # 用浏览器原生 lazyload：零额外 JS 开销，老浏览器自动回退为立即加载
+  native: true
   # Specify the field to use lazyload (site or post)
   field: site
   placeholder:
