@@ -455,10 +455,12 @@ wordcount:
   total_wordcount: true
 
 # Busuanzi count for PV / UV in site
+# 全关：访客统计统一交给 Cloudflare Web Analytics（beacon），
+# 两套数字不一致反而误导人，且 cn.vercount.one 是外部依赖。
 busuanzi:
-  site_uv: true
-  site_pv: true
-  page_pv: true
+  site_uv: false
+  site_pv: false
+  page_pv: false
 
 # --------------------------------------
 # Math
@@ -1120,9 +1122,9 @@ CDN:
     # artalk_css:
     # artalk_js:
     # blueimp_md5:
-    # 不蒜子官方服务（busuanzi.ibruce.info）长期不稳定，数字永远停在「采集中」。
-    # 换成 VerCount（开源延续项目），脚本同时兼容 busuanzi_value_* 旧 ID，模板无需改动。
-    busuanzi: https://cn.vercount.one/js
+    # 访客计数已关闭（busuanzi.* 全 false），统计统一走 Cloudflare Web Analytics。
+    # 日后若要恢复：把上面三项打开，并取消下面这行注释。
+    # busuanzi: https://cn.vercount.one/js
     # canvas_fluttering_ribbon:
     # canvas_nest:
     # canvas_ribbon:
