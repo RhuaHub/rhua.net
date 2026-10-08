@@ -1,4 +1,31 @@
 User-agent: *
 Allow: /
 
+# ---- 生成式引擎（GEO）：显式许可，不依赖默认放行 ----
+# 这些爬虫用于 ChatGPT / Perplexity / Claude 等回答中的检索与引用。
+# 保留它们，文章才有机会被 AI 答案引用并标注来源。
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://rhua.net/sitemap.xml
