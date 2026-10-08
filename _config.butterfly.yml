@@ -1155,8 +1155,12 @@ CDN:
     # prismjs_js:
     # prismjs_lineNumber_js:
     # pjax:
-    # sharejs:
-    # sharejs_css:
+    # 自托管 Share.js：同 fontawesome 的理由 —— jsdelivr 在大陆时好时坏，
+    # 挂了文章页的分享按钮就直接消失。JS + CSS + iconfont 四个文件已 vendor 到
+    # source/vendor/sharejs/（约 31KB）。CSS 里 ../fonts/ 是相对 css 目录的，
+    # 所以字体放在 vendor/sharejs/fonts/ —— 别挪位置，否则图标变方块。
+    sharejs: /vendor/sharejs/social-share.min.js
+    sharejs_css: /vendor/sharejs/share.min.css
     # snackbar:
     # snackbar_css:
     # translate:

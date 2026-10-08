@@ -114,6 +114,10 @@ post_cta:
   button_text: '' # 公众号没有落地链接，按钮留空即不渲染；兜底邮箱见侧栏与 /about/
   button_url: ''
 
+# 首页的分享缩略图。主题在首页没有 cover 时会把 og:image 退回头像图标，
+# 分享到微信很难看 —— 这里指定一张现成的封面顶上（只作用于首页，不影响文章各自封面）
+index_og_image: /img/cover/cover-price-tiers.jpg
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
