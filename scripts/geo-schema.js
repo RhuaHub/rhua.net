@@ -87,6 +87,42 @@ const publisher = {
   logo: logo
 }
 
+/**
+ * 把 faq 渲染成页面上真实可见的一节。
+ *
+ * 这不是可选装饰：Google 的结构化数据规范明确要求 FAQPage 标记的问答
+ * 必须在页面上对用户可见，只写进 JSON-LD 而页面上看不到，属于「标记与
+ * 内容不符」，轻则该富媒体结果不生效，重则被判为垃圾结构化数据。
+ * 顺带对真实读者也有用——选型文章的最后一步通常就是那几个高频追问。
+ *
+ * 注册顺序靠文件名：geo-schema.js 排在 post-cta.js 之前，
+ * 所以 FAQ 落在正文之后、文末引导之前。
+ */
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+hexo.extend.filter.register('after_post_render', function (data) {
+  if (data.layout !== 'post') return data
+  if (!Array.isArray(data.faq) || !data.faq.length) return data
+
+  const items = data.faq.filter(function (x) {
+    return x && x.q && x.a
+  })
+  if (!items.length) return data
+
+  const html = ['<h2>常见问题</h2>']
+  items.forEach(function (x) {
+    html.push('<h3>' + escHtml(x.q) + '</h3>')
+    html.push('<p>' + escHtml(x.a) + '</p>')
+  })
+  data.content += '\n' + html.join('\n') + '\n'
+  return data
+})
+
 hexo.extend.filter.register('after_render:html', function (html) {
   if (!html || html.indexOf('</head>') === -1) return html
 
