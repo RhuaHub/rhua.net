@@ -1,0 +1,2 @@
+# Cloudflare Pages 的 _headers 按行解析，CRLF 会让规则带 \r 而失效 —— 强制 LF
+source/_headers text eol=lf
