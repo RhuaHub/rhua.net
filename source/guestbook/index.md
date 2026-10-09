@@ -42,3 +42,20 @@ cover_type: img
 也可以关注公众号 **「Rhua NAS」**，或者邮件 [parit@sina.com](mailto:parit@sina.com) —— 一般当天回。
 
 <script src="/js/guestbook.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "NAS 选型笔记留言板",
+  "description": "向站长提问 NAS 选型问题的留言页面，附预算、用途与现状的描述通常能得到针对性答复。",
+  "url": "https://rhua.net/guestbook/",
+  "inLanguage": "zh-CN",
+  "mainEntity": {
+    "@type": "ContactPoint",
+    "contactType": "读者留言",
+    "email": "parit@sina.com",
+    "availableLanguage": ["zh-CN"]
+  }
+}
+</script>
