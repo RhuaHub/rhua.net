@@ -1,7 +1,12 @@
 # 留言板后端（Cloudflare Pages Functions）
 
-`/guestbook/` 页面的后端就在 `api/guestbook.js`，部署时由 Cloudflare Pages 自动接管
-`/api/guestbook` 这个路由，跟站点同域名、同源、同一条部署流水线。
+`/guestbook/` 页面的后端代码是 `functions/api/guestbook.js`。前端只认同源的
+`/api/guestbook` 这一个地址，所以下面两条路都能用，**页面代码不用改**：
+
+- **首选**：由 Cloudflare Pages 自动把 `functions/` 接管为 Functions（跟站点同一条流水线）
+- **兜底**：手动建一个 Cloudflare Worker + 绑路由（见第六节）
+
+两者共用同一个 D1 数据库和同一个 `ADMIN_TOKEN`。
 
 | 方法 | 路径 | 说明 |
 | --- | --- | --- |
@@ -75,6 +80,27 @@ node tools/guestbook-smoke.mjs
 ```
 
 零第三方依赖，用 Node 内置的 `node:sqlite` 模拟 D1，跑 21 项断言 GET / POST / DELETE
-与各种防刷分支。改了 `api/guestbook.js` 之后跑一遍，别只靠肉眼。
+与各种防刷分支。改了 `functions/api/guestbook.js` 之后跑一遍，别只靠肉眼。
 
 用到 node:sqlite 时会有一条 ExperimentalWarning，忽略即可。
+
+## 六、兜底方案：手动建 Worker
+
+如果 Pages 没有接管 `functions/`（`curl -X OPTIONS https://rhua.net/api/guestbook`
+返回 404 而非 204，且重部署两三次都没变），那就用 Worker，效果完全一样：
+
+1. Workers & Pages → Create → Worker → Deploy（先随便扔个模板上去）
+2. Edit code → 把 `functions/api/guestbook.js` 整份内容粘贴进去 → Deploy
+   （Worker 用的是同一套模块语法 `export async function onRequest`，可以直接跑）
+3. Worker → Settings → Bindings：D1 绑定变量名 `DB`
+4. Worker → Settings → Variables：加密变量 `ADMIN_TOKEN`、`SALT`
+5. 站点 → Workers Routes → Add route：`rhua.net/api/*`，Worker 选刚才那个
+   （route 必须写在最后，Worker 先建好才选得到）
+
+⚠️ 代价：这份代码从此有两份，Pages 那份不再自动更新 —— 改了记得同步粘贴一次。
+
+## 七、已知未结（2026-10-09）
+
+`functions/` 目录已在 main 分支两次全新部署后仍未被 Pages 接管（`/api/guestbook`
+GET / OPTIONS 均 404，本地产物与线上静态资源均正常）。待在 Dashboard
+的 Deployments → 最新一条 → Functions 列表里确认，若始终为空就走第六节的 Worker 兜底。
