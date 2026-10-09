@@ -1,0 +1,269 @@
+/* rhua.net 留言板 —— 与站点暖金配色一致，独立于主题升级，不依赖任何 CDN */
+
+.rhua-gb {
+  --gb-gold: #b08d57;
+  --gb-gold-dark: #8c6d3f;
+  --gb-bg: #fffdf8;
+  --gb-border: #ece3d4;
+  --gb-text: #3a3428;
+  --gb-meta: #8a8175;
+  margin: 1rem 0 0;
+  font-size: 15px;
+  color: var(--gb-text);
+}
+
+.rhua-gb * {
+  box-sizing: border-box;
+}
+
+/* --------------------------------- 表单 ---------------------------------- */
+
+.rhua-gb-form {
+  padding: 1.1rem 1.2rem 1rem;
+  background: var(--gb-bg);
+  border: 1px solid var(--gb-border);
+  border-radius: 10px;
+}
+
+.rhua-gb-form.is-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.rhua-gb-row {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.rhua-gb-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 200px;
+  min-width: 0;
+  margin-bottom: 0.6rem;
+}
+
+.rhua-gb-field--block {
+  margin-top: 0.2rem;
+}
+
+.rhua-gb-label {
+  font-size: 13px;
+  color: var(--gb-meta);
+  letter-spacing: 0.02em;
+}
+
+.rhua-gb-input,
+.rhua-gb-textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  color: var(--gb-text);
+  background: #fff;
+  border: 1px solid var(--gb-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rhua-gb-textarea {
+  resize: vertical;
+  min-height: 92px;
+  line-height: 1.65;
+}
+
+.rhua-gb-input:focus,
+.rhua-gb-textarea:focus {
+  border-color: var(--gb-gold);
+  box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.14);
+}
+
+.rhua-gb-hint {
+  margin: 0 0 0.4rem;
+  font-size: 12.5px;
+  color: var(--gb-meta);
+}
+
+/* 蜜罐：对真人不可见，但对自动填表脚本可见 */
+.rhua-gb-hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rhua-gb-counter {
+  text-align: right;
+  font-size: 12px;
+  color: var(--gb-meta);
+  margin-top: 0.3rem;
+}
+
+.rhua-gb-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.rhua-gb-btn {
+  padding: 0.5rem 1.35rem;
+  font: inherit;
+  color: #fff;
+  background: var(--gb-gold);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.rhua-gb-btn:hover {
+  background: var(--gb-gold-dark);
+}
+
+.rhua-gb-btn:disabled {
+  background: #cbbca4;
+  cursor: default;
+}
+
+.rhua-gb-tip {
+  font-size: 13px;
+  color: var(--gb-meta);
+}
+
+.rhua-gb-tip.is-bad {
+  color: #b5544a;
+}
+
+.rhua-gb-tip.is-ok {
+  color: #4b7d52;
+}
+
+/* --------------------------------- 列表 ---------------------------------- */
+
+.rhua-gb-list {
+  margin-top: 1.2rem;
+}
+
+.rhua-gb-empty {
+  padding: 1.4rem 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--gb-meta);
+}
+
+.rhua-gb-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--gb-border);
+}
+
+.rhua-gb-item:first-child {
+  border-top: 0;
+}
+
+.rhua-gb-avatar {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f4ecd9;
+  color: var(--gb-gold-dark);
+  font-weight: 600;
+  font-size: 16px;
+  user-select: none;
+}
+
+.rhua-gb-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.rhua-gb-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.rhua-gb-name {
+  font-weight: 600;
+  color: var(--gb-gold-dark);
+}
+
+.rhua-gb-time,
+.rhua-gb-contact {
+  font-size: 12.5px;
+  color: var(--gb-meta);
+}
+
+.rhua-gb-contact {
+  padding: 0 0.35rem;
+  border: 1px dashed var(--gb-border);
+  border-radius: 4px;
+}
+
+.rhua-gb-del {
+  margin-left: auto;
+  padding: 0.1rem 0.5rem;
+  font: inherit;
+  font-size: 12px;
+  color: #b5544a;
+  background: transparent;
+  border: 1px solid #e8cdc8;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rhua-gb-text {
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ------------------------------- 深色模式兜底 ---------------------------- */
+
+html[data-theme='dark'] .rhua-gb,
+body.darkmode .rhua-gb {
+  --gb-bg: #26251f;
+  --gb-border: #3a3830;
+  --gb-text: #d8d2c6;
+  --gb-meta: #9a9384;
+}
+
+html[data-theme='dark'] .rhua-gb-input,
+html[data-theme='dark'] .rhua-gb-textarea,
+body.darkmode .rhua-gb-input,
+body.darkmode .rhua-gb-textarea {
+  background: #1f1e19;
+  color: #d8d2c6;
+}
+
+html[data-theme='dark'] .rhua-gb-avatar,
+body.darkmode .rhua-gb-avatar {
+  background: #322f26;
+  color: #d3b47c;
+}
+
+@media (max-width: 600px) {
+  .rhua-gb-row {
+    display: block;
+  }
+  .rhua-gb-avatar {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}

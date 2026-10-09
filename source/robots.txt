@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+# 留言板接口不参与索引，也不该被执行 robots 的爬虫反复拉取
+Disallow: /api/
 
 # ---- 生成式引擎（GEO）：显式许可，不依赖默认放行 ----
 # 这些爬虫用于 ChatGPT / Perplexity / Claude 等回答中的检索与引用。
