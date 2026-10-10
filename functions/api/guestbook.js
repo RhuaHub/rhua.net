@@ -1,18 +1,22 @@
 /**
- * rhua.net 留言板 API —— Cloudflare Pages Functions
+ * rhua.net 留言板 API —— 独立 Worker（部署名 rhua-guestbook，挂 api.rhua.net）
  *
  * 路由：
  *   GET    /api/guestbook           取留言列表
  *   POST   /api/guestbook           提交留言
  *   DELETE /api/guestbook?id=123    删除留言（需要管理员令牌）
  *
- * 依赖绑定（在 Cloudflare Pages → Settings → Functions 里配置，不写进仓库）：
- *   DB          D1 数据库绑定（变量名必须叫 DB）
- *   ADMIN_TOKEN 管理员令牌，删除留言时校验
- *   SALT        可选，IP 哈希盐值
+ * 环境绑定（由 tools/deploy-guestbook.sh 写入 Worker，不写进仓库）：
+ *   DB            D1 数据库绑定，变量名必须叫 DB（库名 rhua-guestbook）
+ *   ADMIN_TOKEN   管理员令牌，删除留言时校验
+ *   SALT          可选，IP 哈希盐值
+ *   ALLOWED_ORIGIN 允许跨域的来源，默认 https://rhua.net
  *
  * 未绑定 DB 时接口返回 503 + error: 'not_configured'，前端会显示维护提示，
  * 而不是把报错甩给读者。
+ *
+ * 注意：本文件只是处理逻辑，Worker 的入口在同目录 index.js。
+ * （站点本身是 Workers + 静态资源，不是 Pages，所以 functions/ 不会被自动打包。）
  */
 
 const NAME_MAX = 24
@@ -55,16 +59,18 @@ function ensureTable(env) {
 export async function onRequest(ctx) {
   const { request, env } = ctx
 
-  const cors = {
-    'Access-Control-Allow-Origin': new URL(request.url).origin,
-    Vary: 'Origin',
-    'Content-Type': 'application/json; charset=utf-8',
-  }
+  const cors = corsHeaders(request, env)
 
   if (request.method === 'OPTIONS') {
     return new Response(null, {
       status: 204,
-      headers: { ...cors, Allow: 'GET, POST, DELETE, OPTIONS' },
+      headers: {
+        ...cors,
+        Allow: 'GET, POST, DELETE, OPTIONS',
+        'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, x-admin-token',
+        'Access-Control-Max-Age': '86400',
+      },
     })
   }
 
@@ -206,6 +212,21 @@ async function handleDelete(request, env, cors) {
 }
 
 /* -------------------------------- 工具函数 ------------------------------- */
+
+// 接口跑在 api.rhua.net，页面在 rhua.net，属于跨域，必须校验来源后回显
+function corsHeaders(request, env) {
+  const allowList = (env.ALLOWED_ORIGIN || 'https://rhua.net')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+  const origin = request.headers.get('Origin') || ''
+  const allow = allowList.indexOf(origin) >= 0 ? origin : allowList[0]
+  return {
+    'Access-Control-Allow-Origin': allow,
+    Vary: 'Origin',
+    'Content-Type': 'application/json; charset=utf-8',
+  }
+}
 
 function fail(message, status, cors) {
   return json({ ok: false, error: 'invalid', message }, status, cors)

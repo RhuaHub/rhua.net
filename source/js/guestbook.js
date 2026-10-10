@@ -1,12 +1,13 @@
-/* rhua.net 留言板 —— 原生 JS，零依赖，配合 functions/api/guestbook.js 使用
- * 服务端是 Cloudflare Pages Functions（同源 /api/guestbook），数据库是 D1。
- * 未绑定数据库时接口返回 not_configured，这里会显示维护提示而不是报错。
+/* rhua.net 留言板 —— 原生 JS，零依赖
+ * 服务端是独立 Worker（rhua-guestbook），挂在 https://api.rhua.net，数据库是 D1。
+ * 站点本身是 Workers + 静态资源，不会打包 pages 风格的 functions/，所以接口走子域。
+ * 接口未就绪时返回非 200 / 非 JSON，这里会显示维护提示而不是报错。
  */
 (function () {
   'use strict'
 
   const CONFIG = window.RHUA_GB || {}
-  const ENDPOINT = CONFIG.endpoint || '/api/guestbook'
+  const ENDPOINT = CONFIG.endpoint || 'https://api.rhua.net/api/guestbook'
   const STORE_KEY = 'rhua-gb-admin'
 
   function el(tag, cls, text) {

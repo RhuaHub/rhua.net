@@ -1,60 +1,51 @@
-# 留言板后端（Cloudflare Pages Functions）
+# 留言板后端（独立 Worker + D1）
 
-`/guestbook/` 页面的后端代码是 `functions/api/guestbook.js`。前端只认同源的
-`/api/guestbook` 这一个地址，所以下面两条路都能用，**页面代码不用改**：
+**结论先说：本站是 Cloudflare Workers（Workers + 静态资源），不是 Pages。**
+所以 `functions/` 不会被自动打包成 Pages Functions —— 2026-10-09 那天 `/api/guestbook`
+一直 404 就是这个原因，不是配置没配对。
 
-- **首选**：由 Cloudflare Pages 自动把 `functions/` 接管为 Functions（跟站点同一条流水线）
-- **兜底**：手动建一个 Cloudflare Worker + 绑路由（见第六节）
-
-两者共用同一个 D1 数据库和同一个 `ADMIN_TOKEN`。
+现在的实现是：把同样的代码作为**独立 Worker** `rhua-guestbook` 部署，域名挂在
+**`https://api.rhua.net`**，数据库用 D1 `rhua-guestbook`。前端已指向这个地址。
 
 | 方法 | 路径 | 说明 |
 | --- | --- | --- |
-| GET | `/api/guestbook?limit=200` | 取留言列表，倒序 |
-| POST | `/api/guestbook` | 提交留言 |
-| DELETE | `/api/guestbook?id=1` | 删除留言，需要管理员令牌 |
+| GET | `https://api.rhua.net/api/guestbook?limit=200` | 取留言列表，倒序 |
+| POST | 同上 | 提交留言 |
+| DELETE | 同上 + `?id=1&admin=<令牌>` | 删除留言，需要管理员令牌 |
 
-## 一、上线要做的三步（Cloudflare Dashboard）
+## 一、重新部署（改了后端代码之后）
 
-> 这三步是一次性的。绑定后每次 push 都会自动带上，不用再配。
+```bash
+export CLOUDFLARE_API_TOKEN=cfut_xxxx   # 账户级令牌，需 Workers Scripts + D1 + Workers Domains 权限
+export ADMIN_TOKEN=<删留言用的令牌>
+export SALT=<IP 哈希盐，可选>
+bash tools/deploy-guestbook.sh
+```
 
-**1. 建一个 D1 数据库**
+脚本做三件事：上传 `functions/api/index.js` + `guestbook.js`、绑 D1 与环境变量、
+把 `api.rhua.net` 挂到 Worker 上，最后自己 curl 验证一次。
 
-Workers & Pages → D1 → Create database，名字随意（建议 `rhua-guestbook`）。
-
-**2. 绑到 Pages 项目**
-
-Workers & Pages → `rhua-net`（Pages 项目）→ Settings → Functions：
-
-- **D1 database bindings** → Add binding
-  - Variable name：`DB`（**必须叫 DB**，代码里读的是 `env.DB`）
-  - D1 database：选刚才建的那个
-- **Environment variables** → Add
-  - `ADMIN_TOKEN`：一串随机长字符串（删留言用，别写进仓库）
-  - `SALT`（可选）：IP 哈希的盐值
-
-⚠️ Production 和 Preview 是两套独立配置，两边都要设，否则预览环境会 503。
-
-**3. 重新部署一次**
-
-绑定不会回溯到已有部署：Deployments → 最新一条 → Retry deployment。
+固定的几个 ID 写在脚本里：账户 `90213dbb…`、Zone `475989d6…`、D1 `77249d51-4656-4dc5-a59c-d65e34909549`。
+令牌只走环境变量，**不要写进仓库**。
 
 ## 二、验证
 
 ```bash
-curl -s https://rhua.net/api/guestbook
-# → {"ok":true,"admin":false,"items":[]}      正常
-# → {"ok":false,"error":"not_configured",...} 还没绑 DB，或绑完没重新部署
+curl -s https://api.rhua.net/api/guestbook
+# → {"ok":true,"admin":false,"items":[]}
+
+curl -s -D - -o /dev/null -H "Origin: https://rhua.net" https://api.rhua.net/api/guestbook
+# → Access-Control-Allow-Origin: https://rhua.net（跨域来源白名单由 ALLOWED_ORIGIN 控制）
 ```
 
-表不用手动建：第一次请求时会自动 `CREATE TABLE IF NOT EXISTS messages`。
+表不用手动建：第一次请求时自动 `CREATE TABLE IF NOT EXISTS messages`。
 
 ## 三、日常管理
 
 打开 `https://rhua.net/guestbook/?admin=<ADMIN_TOKEN>`，每条留言右下角多一个「删除」按钮。
-令牌只存在 sessionStorage 里，关掉标签页就失效 —— 把带 token 的链接存成书签即可。
+令牌只存在 sessionStorage，关掉标签页即失效 —— 把带 token 的链接存成书签。
 
-要批量处理就去 D1 → Console 直接执行 SQL：
+批量处理去 D1 → Console 直接跑 SQL：
 
 ```sql
 DELETE FROM messages WHERE id = 123;
@@ -71,7 +62,7 @@ SELECT * FROM messages ORDER BY id DESC LIMIT 50;
 - 长度上限：昵称 24 字、联系方式 64 字、正文 500 字
 - 联系方式默认不对外返回，只有管理员视图看得到
 
-真要被盯上了，下一步是给表单加 Cloudflare Turnstile（免费），在 `guestbook.js` 里多传一个 token、后端校验即可。
+真被盯上了，下一步是给表单加 Cloudflare Turnstile（免费）：前端多传一个 token、后端校验。
 
 ## 五、本地跑测试（可选）
 
@@ -79,28 +70,18 @@ SELECT * FROM messages ORDER BY id DESC LIMIT 50;
 node tools/guestbook-smoke.mjs
 ```
 
-零第三方依赖，用 Node 内置的 `node:sqlite` 模拟 D1，跑 21 项断言 GET / POST / DELETE
+零第三方依赖，用 Node 内置的 `node:sqlite` 模拟 D1，跑 21 项断言覆盖 GET / POST / DELETE
 与各种防刷分支。改了 `functions/api/guestbook.js` 之后跑一遍，别只靠肉眼。
-
 用到 node:sqlite 时会有一条 ExperimentalWarning，忽略即可。
 
-## 六、兜底方案：手动建 Worker
+## 六、文件说明
 
-如果 Pages 没有接管 `functions/`（`curl -X OPTIONS https://rhua.net/api/guestbook`
-返回 404 而非 204，且重部署两三次都没变），那就用 Worker，效果完全一样：
+| 文件 | 作用 |
+| --- | --- |
+| `functions/api/guestbook.js` | 业务逻辑（GET/POST/DELETE 处理函数 `onRequest`） |
+| `functions/api/index.js` | Worker 入口，`export default { fetch }` 包一层 |
+| `source/js/guestbook.js` | 前端，默认请求 `https://api.rhua.net/api/guestbook` |
+| `tools/deploy-guestbook.sh` | 上传 + 绑 D1 + 挂域名 |
 
-1. Workers & Pages → Create → Worker → Deploy（先随便扔个模板上去）
-2. Edit code → 把 `functions/api/guestbook.js` 整份内容粘贴进去 → Deploy
-   （Worker 用的是同一套模块语法 `export async function onRequest`，可以直接跑）
-3. Worker → Settings → Bindings：D1 绑定变量名 `DB`
-4. Worker → Settings → Variables：加密变量 `ADMIN_TOKEN`、`SALT`
-5. 站点 → Workers Routes → Add route：`rhua.net/api/*`，Worker 选刚才那个
-   （route 必须写在最后，Worker 先建好才选得到）
-
-⚠️ 代价：这份代码从此有两份，Pages 那份不再自动更新 —— 改了记得同步粘贴一次。
-
-## 七、已知未结（2026-10-09）
-
-`functions/` 目录已在 main 分支两次全新部署后仍未被 Pages 接管（`/api/guestbook`
-GET / OPTIONS 均 404，本地产物与线上静态资源均正常）。待在 Dashboard
-的 Deployments → 最新一条 → Functions 列表里确认，若始终为空就走第六节的 Worker 兜底。
+`functions/` 这个名字是历史遗留（当初按 Pages 约定建的），它现在只是**代码存放位置**，
+不再有自动部署的含义。别指望 push 之后后端会自动更新 —— 后端要跑一次部署脚本。
