@@ -36,6 +36,8 @@
     const root = document.getElementById('rhua-guestbook')
     if (!root || root.dataset.ready === '1') return
     root.dataset.ready = '1'
+    // CSS 变量定义在 .rhua-gb 上，容器只有 id，这里补上类名兜底
+    root.classList.add('rhua-gb')
 
     let adminToken = ''
     try {

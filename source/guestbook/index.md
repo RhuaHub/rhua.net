@@ -32,7 +32,7 @@ cover_type: img
 
 ## 留言
 
-<div id="rhua-guestbook"></div>
+<div id="rhua-guestbook" class="rhua-gb"></div>
 <noscript>
   <p>留言板需要 JavaScript 才能显示。若无法加载，可以直接发邮件到 <a href="mailto:parit@sina.com">parit@sina.com</a>。</p>
 </noscript>

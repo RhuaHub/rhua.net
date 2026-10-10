@@ -1,5 +1,6 @@
 /* rhua.net 留言板 —— 与站点暖金配色一致，独立于主题升级，不依赖任何 CDN */
 
+#rhua-guestbook,
 .rhua-gb {
   --gb-gold: #b08d57;
   --gb-gold-dark: #8c6d3f;
@@ -9,9 +10,10 @@
   --gb-meta: #8a8175;
   margin: 1rem 0 0;
   font-size: 15px;
-  color: var(--gb-text);
+  color: var(--gb-text, #3a3428);
 }
 
+#rhua-guestbook *,
 .rhua-gb * {
   box-sizing: border-box;
 }
@@ -20,8 +22,8 @@
 
 .rhua-gb-form {
   padding: 1.1rem 1.2rem 1rem;
-  background: var(--gb-bg);
-  border: 1px solid var(--gb-border);
+  background: var(--gb-bg, #fffdf8);
+  border: 1px solid var(--gb-border, #ece3d4);
   border-radius: 10px;
 }
 
@@ -51,7 +53,7 @@
 
 .rhua-gb-label {
   font-size: 13px;
-  color: var(--gb-meta);
+  color: var(--gb-meta, #8a8175);
   letter-spacing: 0.02em;
 }
 
@@ -60,9 +62,9 @@
   width: 100%;
   padding: 0.55rem 0.7rem;
   font: inherit;
-  color: var(--gb-text);
+  color: var(--gb-text, #3a3428);
   background: #fff;
-  border: 1px solid var(--gb-border);
+  border: 1px solid var(--gb-border, #ece3d4);
   border-radius: 8px;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -76,14 +78,14 @@
 
 .rhua-gb-input:focus,
 .rhua-gb-textarea:focus {
-  border-color: var(--gb-gold);
+  border-color: var(--gb-gold, #b08d57);
   box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.14);
 }
 
 .rhua-gb-hint {
   margin: 0 0 0.4rem;
   font-size: 12.5px;
-  color: var(--gb-meta);
+  color: var(--gb-meta, #8a8175);
 }
 
 /* 蜜罐：对真人不可见，但对自动填表脚本可见 */
@@ -99,7 +101,7 @@
 .rhua-gb-counter {
   text-align: right;
   font-size: 12px;
-  color: var(--gb-meta);
+  color: var(--gb-meta, #8a8175);
   margin-top: 0.3rem;
 }
 
@@ -111,21 +113,24 @@
   flex-wrap: wrap;
 }
 
+#rhua-guestbook .rhua-gb-btn,
 .rhua-gb-btn {
   padding: 0.5rem 1.35rem;
   font: inherit;
   color: #fff;
-  background: var(--gb-gold);
+  background: var(--gb-gold, #b08d57);
   border: 0;
   border-radius: 999px;
   cursor: pointer;
   transition: background 0.15s ease;
 }
 
+#rhua-guestbook .rhua-gb-btn:hover,
 .rhua-gb-btn:hover {
-  background: var(--gb-gold-dark);
+  background: var(--gb-gold-dark, #8c6d3f);
 }
 
+#rhua-guestbook .rhua-gb-btn:disabled,
 .rhua-gb-btn:disabled {
   background: #cbbca4;
   cursor: default;
@@ -133,7 +138,7 @@
 
 .rhua-gb-tip {
   font-size: 13px;
-  color: var(--gb-meta);
+  color: var(--gb-meta, #8a8175);
 }
 
 .rhua-gb-tip.is-bad {
@@ -154,14 +159,14 @@
   padding: 1.4rem 0;
   text-align: center;
   font-size: 14px;
-  color: var(--gb-meta);
+  color: var(--gb-meta, #8a8175);
 }
 
 .rhua-gb-item {
   display: flex;
   gap: 0.75rem;
   padding: 0.9rem 0;
-  border-top: 1px solid var(--gb-border);
+  border-top: 1px solid var(--gb-border, #ece3d4);
 }
 
 .rhua-gb-item:first-child {
@@ -177,7 +182,7 @@
   justify-content: center;
   border-radius: 50%;
   background: #f4ecd9;
-  color: var(--gb-gold-dark);
+  color: var(--gb-gold-dark, #8c6d3f);
   font-weight: 600;
   font-size: 16px;
   user-select: none;
@@ -198,18 +203,18 @@
 
 .rhua-gb-name {
   font-weight: 600;
-  color: var(--gb-gold-dark);
+  color: var(--gb-gold-dark, #8c6d3f);
 }
 
 .rhua-gb-time,
 .rhua-gb-contact {
   font-size: 12.5px;
-  color: var(--gb-meta);
+  color: var(--gb-meta, #8a8175);
 }
 
 .rhua-gb-contact {
   padding: 0 0.35rem;
-  border: 1px dashed var(--gb-border);
+  border: 1px dashed var(--gb-border, #ece3d4);
   border-radius: 4px;
 }
 
