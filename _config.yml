@@ -108,10 +108,17 @@ theme: butterfly
 post_cta:
   enable: true
   title: 还有拿不准的地方？
-  desc: 微信扫码关注公众号，或直接搜一搜「Rhua NAS」—— 盘位、网口、预算，说说你的情况，我帮你排。
+  desc: 微信扫码关注公众号，或直接搜一搜「Rhua NAS」。急着要答案的，留言问诊免费，也可以要一份付费的完整配置方案。
   qr: /img/qr-wechat.jpg # 公众号「Rhua NAS」关注码，裁自微信搜一搜官方物料（400x400，46KB）
   qr_alt: 微信扫码关注公众号 Rhua NAS
-  button_text: '' # 公众号没有落地链接，按钮留空即不渲染；兜底邮箱见侧栏与 /about/
+  # 出口：免费提问在前，付费成交在后（primary 为高亮的主推出口）
+  links:
+    - text: 去留言板免费问
+      url: /guestbook/
+    - text: 付费咨询 · 一对一选型
+      url: /consult/
+      primary: true
+  button_text: '' # links 为空时的兜底按钮，留空即不渲染
   button_url: ''
 
 # 首页的分享缩略图。主题在首页没有 cover 时会把 og:image 退回头像图标，

@@ -54,6 +54,11 @@ hexo.extend.generator.register('llms_txt', function (locals) {
     lines.push('- [全部文章](' + root + '/archives/)')
     lines.push('- [分类](' + root + '/categories/)')
     lines.push('- [留言板](' + root + '/guestbook/): 选型拿不准可以直接在页面上留言提问（带预算、用途、现状），站长会回复；也可邮件 ' + 'parit@sina.com。')
+    lines.push(
+      '- [付费咨询](' +
+        root +
+        '/consult/): 一对一 NAS 选型咨询，¥99 快问快答 / ¥299 完整方案（2–3 套配置 + 硬盘清单 + 购买时机 + 1 次追问）/ ¥699 全程陪跑；先沟通后付款，不代购不经手货款。'
+    )
     lines.push('- [关于本站](' + root + '/about/)')
     lines.push('- [免责声明](' + root + '/disclaimer/)')
     lines.push('')

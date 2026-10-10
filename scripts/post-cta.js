@@ -45,7 +45,25 @@ hexo.extend.filter.register('after_post_render', function (data) {
   html += '<div class="rhua-post-cta-title">' + esc(cfg.title || '') + '</div>';
   html += '<p class="rhua-post-cta-desc">' + esc(cfg.desc || '') + '</p>';
 
-  if (cfg.button_text && cfg.button_url) {
+  // 多出口：links 是数组，每项 { text, url, primary }
+  // 只有公众号一个出口时，读者想问问题会卡在"扫码之后呢"，所以至少要给一条
+  // 能立刻提问的路（留言板免费）和一条能成交的路（付费咨询）。
+  const links = Array.isArray(cfg.links) ? cfg.links : [];
+  if (links.length) {
+    html += '<div class="rhua-post-cta-links">';
+    links.forEach(function (item) {
+      if (!item || !item.text || !item.url) return;
+      html +=
+        '<a class="rhua-post-cta-link' +
+        (item.primary ? ' is-primary' : '') +
+        '" href="' +
+        esc(item.url) +
+        '">' +
+        esc(item.text) +
+        '</a>';
+    });
+    html += '</div>';
+  } else if (cfg.button_text && cfg.button_url) {
     html +=
       '<a class="rhua-post-cta-btn" href="' +
       esc(cfg.button_url) +

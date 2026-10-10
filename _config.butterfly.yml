@@ -23,6 +23,7 @@ menu:
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
   留言板: /guestbook/ || fas fa-comment-dots
+  付费咨询: /consult/ || fas fa-comment-dollar
   关于: /about/ || fas fa-user
 
 # --------------------------------------
@@ -281,7 +282,7 @@ footer:
     enable: false
     version: true
   # DISCLAIMER:BEGIN 由 tools/sync-disclaimer.py 从 DISCLAIMER.md 生成，请勿手改
-  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>本站仅提供商品促销折扣信息，商品的销售、发货与售后均由商家负责。本站不挂任何推广链接，推广入口仅在社交渠道投放；页面价格为人工核对的时点价，实际以商品页为准。留言板内容由访客自行发布，仅代表留言者本人的意见；本站保留删除不当内容的权利，发现违法或骚扰信息可邮件举报。</span>'
+  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>本站仅提供商品促销折扣信息，商品的销售、发货与售后均由商家负责。本站不挂任何推广链接，推广入口仅在社交渠道投放；页面价格为人工核对的时点价，实际以商品页为准。留言板内容由访客自行发布，仅代表留言者本人的意见；本站保留删除不当内容的权利，发现违法或骚扰信息可邮件举报。付费咨询提供的是选型建议，不构成质量保证或购买承诺；站长不代购、不经手货款、不从商家获取佣金；机器本身的质量与售后问题请找厂商。虚拟服务一经交付不支持退款，沟通阶段可随时中止。</span>'
   # DISCLAIMER:END
 
 # --------------------------------------
@@ -1089,7 +1090,7 @@ inject:
     # 移动端导航：白底实心、横排菜单单行不换行、深色文字（与 PC 同布局）
     - '<style>@media (max-width:768px){#nav{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}#nav.hide-menu #toggle-menu{display:none!important}#nav.hide-menu .menus_items{display:inline-block!important}#menus{flex:none;display:flex;justify-content:flex-end;align-items:center}#search-button .site-page span{display:none}.menus_item{display:inline-block}.menus_item .site-page i{display:none}.menus_item .site-page{padding:0 6px;font-size:13px}}</style>'
     # 文章末尾引导组件样式（scripts/post-cta.js 注入，配色跟随站点暖金主题）
-    - '<style>.rhua-post-cta{display:flex;gap:18px;align-items:center;margin:36px 0 8px;padding:18px 20px;border:1px solid #e6dfd3;border-radius:10px;background:rgba(176,141,87,.05)}.rhua-post-cta-qr{width:96px;height:96px;border-radius:6px;flex:none}.rhua-post-cta-title{font-weight:600;font-size:16px;margin-bottom:6px}.rhua-post-cta-desc{margin:0 0 12px;font-size:14px;color:#8a8175;line-height:1.7}.rhua-post-cta-btn{display:inline-block;padding:7px 18px;border-radius:20px;background:#B08D57;color:#fff!important;font-size:14px;text-decoration:none}.rhua-post-cta-btn:hover{background:#8C6D3F}@media(max-width:768px){.rhua-post-cta{flex-direction:column;text-align:center}}</style>'
+    - '<style>.rhua-post-cta{display:flex;gap:18px;align-items:center;margin:36px 0 8px;padding:18px 20px;border:1px solid #e6dfd3;border-radius:10px;background:rgba(176,141,87,.05)}.rhua-post-cta-qr{width:96px;height:96px;border-radius:6px;flex:none}.rhua-post-cta-title{font-weight:600;font-size:16px;margin-bottom:6px}.rhua-post-cta-desc{margin:0 0 12px;font-size:14px;color:#8a8175;line-height:1.7}.rhua-post-cta-btn{display:inline-block;padding:7px 18px;border-radius:20px;background:#B08D57;color:#fff!important;font-size:14px;text-decoration:none}.rhua-post-cta-btn:hover{background:#8C6D3F}.rhua-post-cta-links{display:flex;flex-wrap:wrap;gap:10px}.rhua-post-cta-link{display:inline-block;padding:6px 16px;border-radius:20px;border:1px solid #d9cfba;color:#8a8175!important;font-size:14px;text-decoration:none;line-height:1.6}.rhua-post-cta-link:hover{border-color:#B08D57;color:#8C6D3F!important}.rhua-post-cta-link.is-primary{background:#B08D57;border-color:#B08D57;color:#fff!important}.rhua-post-cta-link.is-primary:hover{background:#8C6D3F;color:#fff!important}@media(max-width:768px){.rhua-post-cta{flex-direction:column;text-align:center}.rhua-post-cta-links{justify-content:center}}</style>'
   bottom:
     # - <script src="xxxx"></script>
 

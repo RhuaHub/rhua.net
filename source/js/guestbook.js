@@ -78,23 +78,31 @@
     row.appendChild(nameWrap)
 
     const contactWrap = el('label', 'rhua-gb-field')
-    contactWrap.appendChild(el('span', 'rhua-gb-label', '联系方式（选填）'))
+    contactWrap.appendChild(el('span', 'rhua-gb-label', '联系方式'))
     const contact = el('input', 'rhua-gb-input')
     contact.type = 'text'
     contact.maxLength = 64
-    contact.placeholder = '邮箱或微信，方便的话回复你'
+    contact.placeholder = '微信号或邮箱'
     contact.autocomplete = 'off'
     contactWrap.appendChild(contact)
     row.appendChild(contactWrap)
     form.appendChild(row)
-    form.appendChild(el('p', 'rhua-gb-hint', '联系方式只有站长能看到，不会公开展示。'))
+    // 原来这句写的是「只有站长能看到」，听起来像在劝退——改成说清留了有什么用
+    form.appendChild(
+      el(
+        'p',
+        'rhua-gb-hint',
+        '留了联系方式我才能回复你（一般当天）。只我一个人看得到，不会公开展示。'
+      )
+    )
 
     const contentWrap = el('label', 'rhua-gb-field rhua-gb-field--block')
-    contentWrap.appendChild(el('span', 'rhua-gb-label', '留言'))
+    contentWrap.appendChild(el('span', 'rhua-gb-label', '你的情况'))
     const content = el('textarea', 'rhua-gb-textarea')
     content.rows = 4
     content.maxLength = 500
-    content.placeholder = '想问什么、想聊什么，直接写。（最多 500 字，不支持链接）'
+    content.placeholder =
+      '预算 / 用途 / 现状 —— 这三样写清楚，我一般当天就能给你结论。（最多 500 字，不支持链接）'
     contentWrap.appendChild(content)
     form.appendChild(contentWrap)
 
@@ -164,7 +172,10 @@
         submit.textContent = '发布留言'
         if (data && data.ok) {
           tip.className = 'rhua-gb-tip is-ok'
-          tip.textContent = '已发布，谢谢你。'
+          // 没留联系方式等于线索作废，这里明确提醒，比事后补救便宜
+          tip.textContent = contact.value.trim()
+            ? '收到了，一般当天回复你。'
+            : '已发布，但你没留联系方式，我回不了你 —— 可以再补一条，或发邮件 parit@sina.com。'
           content.value = ''
           contact.value = ''
           form.querySelector('.rhua-gb-counter').textContent = '0 / 500'
