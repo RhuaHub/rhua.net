@@ -13,7 +13,13 @@ cover_type: img
 
 留言板不用来挂链接、发广告，写了会被直接拒掉。
 
-> 想要一份能直接下单的完整配置方案（硬盘清单、购买时机、追问调整），看[付费咨询](/consult/)，¥299 起。先在这里问清楚再做决定也不迟。
+<div class="rhua-gb-cta">
+  <div class="rhua-gb-cta-text">
+    <strong>想要能直接下单的完整配置方案？</strong>
+    <span>硬盘清单、购买时机、追问调整，¥299 起，一般 24 小时内交付。下面免费问清楚也行。</span>
+  </div>
+  <a class="rhua-gb-cta-btn" href="/consult/">看看付费咨询</a>
+</div>
 
 ## 怎么问最容易得到靠谱答案
 
