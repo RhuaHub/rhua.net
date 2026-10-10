@@ -44,8 +44,6 @@ cover_type: img
 
 也可以关注公众号 **「Rhua NAS」**，或者邮件 [parit@sina.com](mailto:parit@sina.com) —— 一般当天回。
 
-内容帮到你了，可以[请站长喝杯咖啡](/about/#赞助)，不强求。
-
 <script src="/js/guestbook.js" defer></script>
 
 <script type="application/ld+json">
