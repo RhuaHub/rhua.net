@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>NAS 选购避坑清单 · 2026 双 11 版</title>
+<style>
+  :root{
+    --gold:#B08D57; --gold-d:#9A7638; --gold-dd:#8C6D3F; --gold-l:#C9A961;
+    --ink:#2b2620; --ink-soft:#6b6257; --paper:#fdfbf7; --line:#e6ddcf;
+    --warn:#a4442e; --ok:#4a6b3a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:0;}
+  body{
+    font-family:"Microsoft YaHei","PingFang SC",sans-serif;
+    color:var(--ink);background:var(--paper);
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    font-size:10.5pt;line-height:1.62;
+  }
+  .page{width:210mm;min-height:297mm;padding:16mm 15mm 14mm;position:relative;page-break-after:always;background:var(--paper);}
+  .page:last-child{page-break-after:auto;}
+  .footer{
+    position:absolute;bottom:8mm;left:15mm;right:15mm;
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid var(--line);padding-top:3mm;
+    font-size:8pt;color:var(--ink-soft);
+  }
+  .footer b{color:var(--gold-d);font-weight:600;}
+  h2.sec{
+    font-size:15pt;color:var(--gold-dd);margin-bottom:2mm;
+    border-left:4px solid var(--gold);padding-left:3mm;letter-spacing:1px;
+  }
+  .sec-sub{font-size:9pt;color:var(--ink-soft);margin-bottom:4mm;padding-left:7mm;}
+  table{width:100%;border-collapse:collapse;margin:3mm 0;font-size:9.5pt;}
+  th{background:var(--gold);color:#fff;font-weight:600;padding:2mm 2.5mm;text-align:left;font-size:9pt;}
+  td{padding:2mm 2.5mm;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:nth-child(even) td{background:#f7f2e9;}
+  .kicker{
+    background:linear-gradient(135deg,var(--gold-d),var(--gold));
+    color:#fff;border-radius:2mm;padding:2.5mm 4mm;margin-bottom:4mm;font-size:9.5pt;
+  }
+  .kicker b{color:#fff8ea;}
+  .box{border:1px solid var(--line);border-radius:2mm;padding:3mm 4mm;margin:3mm 0;background:#faf6ee;}
+  .box.red{border-color:#d9b3a8;background:#faf1ee;}
+  .box.red .bt{color:var(--warn);}
+  .box.green{border-color:#b8c9ab;background:#f2f6ee;}
+  .box.green .bt{color:var(--ok);}
+  .bt{font-weight:700;font-size:10.5pt;display:block;margin-bottom:1mm;}
+  ul{margin:2mm 0 2mm 5mm;}
+  li{margin-bottom:1.4mm;}
+  .num{display:inline-block;width:6.5mm;height:6.5mm;line-height:6.5mm;text-align:center;
+    background:var(--gold);color:#fff;border-radius:50%;font-size:9pt;font-weight:700;margin-right:2mm;}
+  .qitem{margin-bottom:3.2mm;}
+  .qitem b{color:var(--gold-dd);}
+  .qa{color:var(--ink-soft);font-size:9.5pt;padding-left:9mm;}
+  .cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    background:linear-gradient(160deg,#2b2620 0%,#3d352a 55%,#59482f 100%);color:#f3ead9;}
+  .cover .badge{border:1.5px solid var(--gold-l);color:var(--gold-l);border-radius:99px;
+    padding:1.5mm 7mm;font-size:10pt;letter-spacing:4px;margin-bottom:12mm;}
+  .cover h1{font-size:34pt;letter-spacing:6px;font-weight:700;line-height:1.3;margin-bottom:6mm;}
+  .cover h1 span{color:var(--gold-l);}
+  .cover .sub{font-size:12.5pt;color:#d8c9ab;letter-spacing:2px;margin-bottom:16mm;line-height:2;}
+  .cover .meta{font-size:10pt;color:#b7a98d;}
+  .cover .meta b{color:var(--gold-l);font-weight:600;}
+  .covrule{width:60mm;height:2px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent);margin:0 0 8mm;}
+  .small{font-size:8.5pt;color:var(--ink-soft);}
+  .hl{background:linear-gradient(transparent 62%,#f3ddb0 62%);font-weight:600;}
+  .endpage{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+  .endpage h1{font-size:22pt;color:var(--gold-dd);letter-spacing:3px;margin-bottom:6mm;}
+  .qr-slot{
+    width:52mm;height:52mm;border:2px dashed var(--gold);border-radius:3mm;
+    display:flex;align-items:center;justify-content:center;color:var(--gold-d);
+    font-size:10pt;margin:6mm auto;background:#faf6ee;text-align:center;line-height:1.8;padding:4mm;
+  }
+  .checkline{display:flex;align-items:flex-start;margin-bottom:2.6mm;font-size:9.8pt;}
+  .cb{width:4.2mm;height:4.2mm;border:1.5px solid var(--gold-d);border-radius:1mm;margin:1mm 2.5mm 0 0;flex:none;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ 封面 ═══════════ -->
+<div class="page cover">
+  <div class="badge">2026 · 双 11 版</div>
+  <h1>NAS 选购<br><span>避坑清单</span></h1>
+  <div class="covrule"></div>
+  <div class="sub">
+    十三条实测结论 · 五张对照表 · 一页下单前十问<br>
+    机械盘涨 145% 的这一年，帮你把每一步的钱花对
+  </div>
+  <div class="meta">
+    价格核对日期 <b>2026-10-23</b>（双 11 进行中，价格周更）<br><br>
+    Joey · <b>NAS 选型笔记</b> · rhua.net
+  </div>
+</div>
+
+<!-- ═══════════ P1 下单前十问 ═══════════ -->
+<div class="page">
+  <h2 class="sec">下单前十问</h2>
+  <div class="sec-sub">任何一问答不上来，先别付定金。这页可以单独截图存手机。</div>
+
+  <div class="qitem"><span class="num">1</span><b>我的用途里有 Docker 吗？（Home Assistant、下载机、音乐服务器都算）</b>
+    <div class="qa">有 → 只看 x86 机型，ARM 机型和部分品牌低价款直接出局，先筛这一条再看价格。</div></div>
+  <div class="qitem"><span class="num">2</span><b>我需要几个盘位？按现在的数据量，还是两年后的？</b>
+    <div class="qa">按两年后算。盘位买少了不可逆，扩容比当时多买两个盘位贵得多 —— 尤其这个硬盘行情。</div></div>
+  <div class="qitem"><span class="num">3</span><b>硬盘的预算列出来了吗？（不是机器预算的一部分）</b>
+    <div class="qa">2026 年装满一个 4 盘位的钱约是机器的两倍。只按机器价做预算，是最常见的翻车点。</div></div>
+  <div class="qitem"><span class="num">4</span><b>这块盘是 CMR 吗？</b>
+    <div class="qa">进 RAID 一律 CMR，SMR 再便宜都不要（重建慢、可能中途掉盘）。商品页搜不到就问客服要型号，按型号查。</div></div>
+  <div class="qitem"><span class="num">5</span><b>我算过每 TB 单价吗？</b>
+    <div class="qa">别看总价。2TB 约 ¥565/TB，4TB 往上各容量基本持平 —— 今年买 2TB 盘是最贵的错法。</div></div>
+  <div class="qitem"><span class="num">6</span><b>我对比过渠道差价吗？</b>
+    <div class="qa">同一块红盘 4TB，京东自营与第三方盒装能差 ¥300+。2026 年渠道差价对总账的影响，已超过"买 4TB 还是 8TB"的选择。</div></div>
+  <div class="qitem"><span class="num">7</span><b>带盘套装算过账吗？</b>
+    <div class="qa">2026 年独有现象：套装里的盘可能比单买便宜约一成。下单前算「裸机 + 盘现价」vs「套装价」，哪个低上哪个。</div></div>
+  <div class="qitem"><span class="num">8</span><b>这个"大促价"和 9 月、10 月的日常价比过吗？</b>
+    <div class="qa">双 11 规则今年变了：跨店满减取消、存储件大多无国补。下单前截图，价保期内对比 —— 已有买家晒出叠券比 10 天前贵 ¥300。</div></div>
+  <div class="qitem"><span class="num">9</span><b>我买的是备份，还是单点存储？</b>
+    <div class="qa">RAID 防盘坏，防不了误删、勒索、火灾。重要数据 3-2-1：三份、两种介质、一份异地（最低档网盘就够）。</div></div>
+  <div class="qitem"><span class="num">10</span><b>我是不是其实不用买？</b>
+    <div class="qa">资料 200GB 内 → 网盘+移动硬盘；全家纯 iPhone → iCloud 家庭共享摊下来每人年不到 ¥140。先过这关，再谈机型。</div></div>
+
+  <div class="footer"><span>NAS 选购避坑清单 · 2026 双 11 版</span><b>rhua.net · 价格 2026-10-23 核</b></div>
+</div>
+
+<!-- ═══════════ P2 价位档 ═══════════ -->
+<div class="page">
+  <h2 class="sec">机器怎么选：价位档对照</h2>
+  <div class="sec-sub">先定用途，再定档位。表中为京东自营/官方渠道到手价，2026-10-23 核。</div>
+
+  <table>
+    <tr><th style="width:14%">档位</th><th>代表机型</th><th style="width:22%">到手价</th><th>说明</th></tr>
+    <tr><td><b>入门</b></td><td>两盘位（品牌入门款）</td><td>¥1500–2700</td><td>轻度备份可行；注意确认支持 Docker</td></tr>
+    <tr><td><b>主流</b></td><td>绿联 DXP4800（N100/4盘位/双2.5G）</td><td>¥2999–3300<br><span class="small">16G 活动价 ¥3799 起</span></td><td>大多数家庭的答案；曾有消费券+国补到手 ¥2974 的窗口，随时下线</td></tr>
+    <tr><td><b>主流+</b></td><td>极空间 Q4（N95/4盘位）</td><td>¥2699</td><td>同档位的价格参考系</td></tr>
+    <tr><td><b>进阶</b></td><td>绿联 DXP4800 GT 16G（双万兆）</td><td>¥3827<br><span class="small">30 天最低 ¥3599</span></td><td>万兆要跑满需交换机+网卡另算钱</td></tr>
+    <tr><td><b>进阶</b></td><td>绿联 DXP4800 Plus（8505/万兆）</td><td>8G ¥3699<br>16G ¥4699</td><td>多容器/虚拟机向；8G→16G 官方差价 ¥1000 &lt; 自购内存价</td></tr>
+  </table>
+
+  <div class="box green"><span class="bt">一句话定档</span>
+  存照片文档、偶尔看片 → 主流档足够；要跑多个 Docker、虚拟机、AI 应用 → 才值得为 CPU 和万兆加钱。性能过剩很常见，盘位买少不可逆。</div>
+
+  <div class="box red"><span class="bt">机器也在涨：别跨季度等</span>
+  内存涨价已传导到整机 —— 部分主流机型比今年初贵 ¥800–1100。机器可以等大促节点，<b>但别跨季度等</b>：省下 ¥200–500 的同时，涨幅可能已经吃掉 ¥800。</div>
+
+  <div class="box"><span class="bt">主流档下单前最后两查</span>
+  ① 该机型是否官方支持热插拔（同品牌不同渠道标注可能有出入，问客服并截图）；
+  ② 内存是否可后期扩展、上限多少 —— 涨价周期里，一步到位的内存反而更保值。</div>
+
+  <div class="footer"><span>NAS 选购避坑清单 · 2026 双 11 版</span><b>rhua.net · 价格 2026-10-23 核</b></div>
+</div>
+
+<!-- ═══════════ P3 硬盘 ═══════════ -->
+<div class="page">
+  <h2 class="sec">硬盘怎么挑：2026 年最贵的错法清单</h2>
+  <div class="sec-sub">硬盘是今年 NAS 总账里的大头，也是坑最密的一段。</div>
+
+  <table>
+    <tr><th>型号</th><th style="width:20%">到手价</th><th style="width:18%">每 TB 单价</th><th>备注</th></tr>
+    <tr><td>西数蓝盘 2TB</td><td>约 ¥1129</td><td><b style="color:var(--warn)">¥565/TB</b></td><td>⚠ 单价坑，非刚需不买</td></tr>
+    <tr><td>西数红盘 Plus 4TB（WD40EFZZ）</td><td>¥1309</td><td>¥327/TB</td><td>10-23 京东自营 30 天最低；10-15 还是 ¥1469</td></tr>
+    <tr><td>西数红盘 Plus 8TB</td><td>约 ¥2903</td><td>¥363/TB</td><td>两个月前约 ¥1500</td></tr>
+    <tr><td>红盘 Pro 16TB</td><td>约 ¥5699</td><td>¥356/TB</td><td>大容量缺货最狠、溢价最高</td></tr>
+  </table>
+
+  <div class="box"><span class="bt">规律：4TB 往上单价几乎全平，只有 2TB 贵出一半</span>
+  记住区间 ¥330–370/TB，高于它就要问一句为什么。这个数还能反过来<b>验渠道</b>：低于区间太多的，想想它为什么便宜。</div>
+
+  <div class="box green"><span class="bt">2026 独有现象：带盘套装倒挂</span>
+  实锤案例：DXP4800 Pro 16G + 2×8T 红盘套装 ¥9205.98，折算单块 8T 约 ¥2427 —— 而单买 8T 要 ¥2700 起。<b>盘装在机器里，比单买便宜约一成。</b>挑盘（指定品牌/转速）或想移机旧盘的人除外。</div>
+
+  <div class="box red"><span class="bt">四条硬规矩</span>
+  ① 进 RAID 一律 CMR，SMR 不要；② NAS 专用盘，不用桌面盘（7×24 故障率差太多）；③ 电费别忽略，x86 与 ARM 差一个数量级；④ 今年<b>二手大容量盘水位史上最脏</b> —— 详见第 6 页五查。</div>
+
+  <div class="footer"><span>NAS 选购避坑清单 · 2026 双 11 版</span><b>rhua.net · 价格 2026-10-23 核</b></div>
+</div>
+
+<!-- ═══════════ P4 行情专页 ═══════════ -->
+<div class="page">
+  <h2 class="sec">2026 行情专页：固态和机械盘已经"分家"</h2>
+  <div class="sec-sub">把「存储涨价」当一个整体来判断，是今年最容易买错的根源。核对日期 2026-10-19/23。</div>
+
+  <table>
+    <tr><th style="width:16%"></th><th>消费级固态 SSD</th><th>机械盘 HDD</th></tr>
+    <tr><td><b>价格方向</b></td><td style="color:var(--ok)"><b>正在回落</b></td><td style="color:var(--warn)"><b>还在创新高</b></td></tr>
+    <tr><td><b>实测锚点</b></td><td>三星 9100 Pro 1TB ¥1549（史低 ¥1539）<br>致态 TiPlus9100 2TB 一度 ¥1015<br>部分 PCIe 5.0 比 4.0 还便宜</td><td>红盘 Plus 8TB 两月 ¥1500→¥2903<br>红盘 Pro 16TB +128%<br>2TB 蓝盘 ¥600→¥1200</td></tr>
+    <tr><td><b>原因</b></td><td>原厂产能转企业级，消费级成待清库存</td><td>云厂商长约锁产能，西数 2026 售罄、排到 2028</td></tr>
+  </table>
+
+  <div class="box"><span class="bt">两个被传错的判断</span>
+  ① <b>「涨幅收窄」≠「降价」</b> —— Q4 涨幅收窄到 0–3% 是终端成交价口径；原厂合约价口径仍要涨 15–20%，两个数说的不是一件事。
+  ② <b>存储股大跌是估值回调，不是供需反转</b> —— 东芝扩产要到 2027 财年才落地，没有任何原厂下调 Q4 合约价。</div>
+
+  <div class="box"><span class="bt">双 11 两条新规则（直接改变算账方式）</span>
+  ① 跨店满减取消，改为<b>单件官方立减</b> —— 比价只认单件到手价；
+  ② 第四批国补压在家电/手机整机，<b>DIY 存储件大多不在补贴盘子</b> —— 你等到的通常是「立减价」，不是「国补价」。</div>
+
+  <div class="box green"><span class="bt">对应到动作</span>
+  机械盘：刚需直接买，等不到便宜；固态：加缓存/系统盘，现在是近半年最好的窗口；整机：按大促节点买，不跨季度；内存：短期没有等的价值。</div>
+
+  <div class="footer"><span>NAS 选购避坑清单 · 2026 双 11 版</span><b>rhua.net · 价格 2026-10-23 核</b></div>
+</div>
+
+<!-- ═══════════ P5 相册 vs 网盘 ═══════════ -->
+<div class="page">
+  <h2 class="sec">家庭相册：NAS 还是网盘？</h2>
+  <div class="sec-sub">先把丑话说完：如果只为了省钱，NAS 永远赢不了网盘。</div>
+
+  <table>
+    <tr><th>方案</th><th style="width:26%">年成本</th><th>说明</th></tr>
+    <tr><td>入门 NAS（机器+硬盘）</td><td>一次性 ¥5600 起</td><td>对比网盘年费，<b>回本要 8–22 年</b>，而硬盘寿命通常 5–8 年</td></tr>
+    <tr><td>百度网盘 SVIP</td><td>¥188–298</td><td>限速与会员涨价是常态</td></tr>
+    <tr><td>iCloud+ 2TB</td><td>¥688（家庭共享）</td><td>摊到全家每人年不到 ¥140 —— 纯 iPhone 家庭的最强对手</td></tr>
+    <tr><td>夸克 / 阿里云盘</td><td>¥88–150</td><td>低价位档参考</td></tr>
+  </table>
+
+  <div class="box green"><span class="bt">NAS 真正卖的不是便宜，是数据自主权</span>
+  一次性买断、不限速、平台关停风险归零、全家共享、原图不压缩、不止能存照片。这钱买的是<b>确定性</b>，不是存储空间。</div>
+
+  <div class="box red"><span class="bt">五类人真的别买</span>
+  ① 资料 200GB 以内；② 全家纯 iPhone 且 iCloud 够用；③ 只想存照片偶尔翻翻；④ 不愿花一个下午折腾配置；⑤ 指望它省钱。</div>
+
+  <div class="box"><span class="bt">想清楚了要买：正确姿势是两套并存</span>
+  <b>3-2-1 备份</b>：三份数据、两种介质、一份异地。NAS 存主体 + 最低档网盘做异地副本。<b>NAS 不是网盘的替代品，是它的升级搭档。</b></div>
+
+  <div class="footer"><span>NAS 选购避坑清单 · 2026 双 11 版</span><b>rhua.net · 价格 2026-10-23 核</b></div>
+</div>
+
+<!-- ═══════════ P6 二手盘五查 ═══════════ -->
+<div class="page">
+  <h2 class="sec">二手盘 / 新盘到手：十分钟五查</h2>
+  <div class="sec-sub">先看行情：全新行货约 ¥585/TB，二手企业盘能报到 ¥103/TB —— 差 5 倍以上时，那不是捡漏，是饵。</div>
+
+  <div class="checkline"><span class="cb"></span><div><b>查一 · 读 SMART</b><br>通电时间、开关机次数、温度。新盘这几个数应接近零，可疑直接退。盯死四个值：05 / C4 / C5 / C6 任何一个非零，准备退货（C7 例外，多半是线材）。</div></div>
+  <div class="checkline"><span class="cb"></span><div><b>查二 · 序列号三对</b><br>盘体标签、包装盒、软件读数，三个对不上 = 翻新盘。</div></div>
+  <div class="checkline"><span class="cb"></span><div><b>查三 · 官网查保修</b><br>序列号查保修起始日。新盘显示已激活多年，必有蹊跷。注意：<b>西数不支持个人送保</b>，这是二手盘最大的隐性成本。</div></div>
+  <div class="checkline"><span class="cb"></span><div><b>查四 · 看外观</b><br>标签有无撕重贴痕迹、SATA 金手指磨损密度。</div></div>
+  <div class="checkline"><span class="cb"></span><div><b>查五 · 入机先长测</b><br>存储池同步、数据清理跑完，再放重要数据。</div></div>
+
+  <div class="box red"><span class="bt">今年的高危品种</span>
+  清零盘（SMART 记录被抹）、矿盘换标、SMR 冒充 CMR（"加密盘""飞牛专用"）、平台不认的 SAS/4Kn 盘。记住：<b>比别人便宜一大截的，多半不是捡漏，是饵。</b></div>
+
+  <div class="box green"><span class="bt">其实还有一个更便宜的选项</span>
+  翻翻家里的"隐形库存"：旧电脑拆下来的机械盘，跑完五查后可以做冷备份和异地副本 —— 这波行情里，旧盘是新盘最好的平替。</div>
+
+  <div class="footer"><span>NAS 选购避坑清单 · 2026 双 11 版</span><b>rhua.net · 价格 2026-10-23 核</b></div>
+</div>
+
+<!-- ═══════════ 尾页 ═══════════ -->
+<div class="page endpage">
+  <h1>这份清单会持续更新</h1>
+  <div class="covrule"></div>
+  <p style="max-width:150mm;color:var(--ink-soft);line-height:2;">
+    存储行情每周都在变 —— 本清单里的价格以 <b>2026-10-23</b> 为准。<br>
+    最新单价表、机型对照与逐篇实测，都在：<br><br>
+    <b style="font-size:15pt;color:var(--gold-dd);">rhua.net · NAS 选型笔记</b>
+  </p>
+  <div class="qr-slot">公众号二维码占位<br>（生成后替换为「Rhua NAS」二维码图片）</div>
+  <p class="small" style="max-width:150mm;text-align:left;line-height:1.9;">
+    <b>利益相关与免责声明</b>：本清单由 Joey（rhua.net 站长）独立整理，与文中提及的任何品牌无商业合作，不含联盟推广链接。价格为公开渠道参考价，随促销与行情浮动，下单请以商品页实时价格为准；数据核对日期均已标注，过期数据不代表最新行情。本清单不构成购买建议，数据丢失风险请自行评估并遵守 3-2-1 备份原则。完整免责声明见 rhua.net/disclaimer/。
+  </p>
+  <div class="footer" style="position:static;margin-top:10mm;"><span>NAS 选购避坑清单 · 2026 双 11 版</span><b>rhua.net</b></div>
+</div>
+
+</body>
+</html>
