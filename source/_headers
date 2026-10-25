@@ -3,3 +3,24 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000
+
+# 静态资源走浏览器缓存：30 天。图片/字体/样式脚本文件名基本不变，
+# 改动时重命名即可突破缓存（与 Hexo 习惯一致）。
+/img/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+/fonts/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+/css/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/js/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/favicon.ico
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# 数据接口与页面本身永不缓存，保持留言板与内容实时
+/api/*
+  Cache-Control: no-store
