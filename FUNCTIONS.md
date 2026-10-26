@@ -1,4 +1,6 @@
-# 留言板后端（独立 Worker + D1）
+# 留言板后端（已下线，2026-10-26）
+
+> ⚠️ 留言板已于 2026-10-26 下线：Worker `rhua-guestbook` 与 D1 `rhua-guestbook` 已删除，`api.rhua.net` 已停用。留言数据备份在仓库外 `backups/guestbook-d1-2026-10-26.json`。以下内容仅作历史存档。
 
 **结论先说：本站是 Cloudflare Workers（Workers + 静态资源），不是 Pages。**
 所以 `functions/` 不会被自动打包成 Pages Functions —— 2026-10-09 那天 `/api/guestbook`

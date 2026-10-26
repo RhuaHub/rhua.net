@@ -22,7 +22,6 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
-  留言板: /guestbook/ || fas fa-comment-dots
   商城: /mall/ || fas fa-cart-shopping
   关于: /about/ || fas fa-user
 
@@ -282,7 +281,7 @@ footer:
     enable: false
     version: true
   # DISCLAIMER:BEGIN 由 tools/sync-disclaimer.py 从 DISCLAIMER.md 生成，请勿手改
-  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>本站仅提供商品促销折扣信息，商品的销售、发货与售后均由商家负责。本站不挂任何推广链接，推广入口仅在社交渠道投放；页面价格为人工核对的时点价，实际以商品页为准。留言板内容由访客自行发布，仅代表留言者本人的意见；本站保留删除不当内容的权利，发现违法或骚扰信息可邮件举报。付费咨询提供的是选型建议，不构成质量保证或购买承诺；站长不代购、不经手货款、不从商家获取佣金；机器本身的质量与售后问题请找厂商。虚拟服务一经交付不支持退款，沟通阶段可随时中止。</span>'
+  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>本站仅提供商品促销折扣信息，商品的销售、发货与售后均由商家负责。站内商城及部分外链为电商推广链接：从这里购买的价格与你自行搜索完全一致，平台佣金不会影响任何一条推荐；页面价格为人工核对的时点价，实际以商品页为准。付费咨询提供的是选型建议，不构成质量保证或购买承诺；站长不代购、不经手货款；机器本身的质量与售后问题请找厂商。虚拟服务一经交付不支持退款，沟通阶段可随时中止。</span>'
   # DISCLAIMER:END
 
 # --------------------------------------

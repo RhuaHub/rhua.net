@@ -47,7 +47,7 @@ hexo.extend.filter.register('after_post_render', function (data) {
 
   // 多出口：links 是数组，每项 { text, url, primary }
   // 只有公众号一个出口时，读者想问问题会卡在"扫码之后呢"，所以至少要给一条
-  // 能立刻提问的路（留言板免费）和一条能成交的路（付费咨询）。
+  // 能立刻提问的路（邮件免费）和一条能成交的路（付费咨询）。
   const links = Array.isArray(cfg.links) ? cfg.links : [];
   if (links.length) {
     html += '<div class="rhua-post-cta-links">';

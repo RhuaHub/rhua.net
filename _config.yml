@@ -113,8 +113,8 @@ post_cta:
   qr_alt: 微信扫码关注公众号 Rhua NAS
   # 出口：免费提问在前，付费成交在后（primary 为高亮的主推出口）
   links:
-    - text: 去留言板免费问
-      url: /guestbook/
+    - text: 邮件免费问
+      url: mailto:parit@sina.com
     - text: 付费咨询 · 一对一选型
       url: /consult/
       primary: true

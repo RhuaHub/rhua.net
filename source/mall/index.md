@@ -26,7 +26,7 @@ cover_type: img
 
 1. **还没想好买不买**：先看 [成品 NAS 五档怎么选](/2026/10/nas-price-tiers-2026/) 和 [买便宜的正确时机](/2026/10/nas-buy-timing-2026/)，别急着下单
 2. **定了型号**：主机 + 硬盘一次配齐，[第一周该做的 7 件事](/2026/10/nas-first-week-after-double11/) 收藏好，到手照着做
-3. **拿不准自己的场景**：去[留言板](/guestbook/)写预算和用途，免费帮你排配置
+3. **拿不准自己的场景**：发邮件到 [parit@sina.com](mailto:parit@sina.com) 写上预算和用途，或看[付费咨询](/consult/)
 
 ---
 

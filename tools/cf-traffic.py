@@ -12,7 +12,6 @@ rhua.net 流量 / 运营健康检查脚本（只读）
   3. Workers 请求量（GraphQL workersInvocationsAdaptive）—— 需要 Account Analytics 读权限
   4. Cloudflare Web Analytics / RUM 访客数 —— 需要 RUM 读权限
   5. Zone HTTP 分析（请求数 / 独立访客）—— 需要 Zone Analytics 读权限
-  6. 留言板 D1 留言统计（真实用户互动的下限指标）
 """
 import json
 import os
@@ -23,7 +22,6 @@ from datetime import datetime, timezone, timedelta
 
 ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "90213dbbd8085e5bbabfe7d1797e1d80")
 ZONE_ID = os.environ.get("CLOUDFLARE_ZONE_ID", "475989d6c6b081bfa2e0d1706b28254a")
-D1_ID = os.environ.get("CLOUDFLARE_D1_ID", "77249d51-4656-4dc5-a59c-d65e34909549")
 WORKER_SERVICE = "rhua-net"
 
 TOKEN = os.environ.get("CLOUDFLARE_API_TOKEN", "")
@@ -129,20 +127,9 @@ def main():
     except Exception as e:
         print(f"[?]   Zone 分析解析失败: {e}")
 
-    # 6. 留言板 D1
-    try:
-        r = req("POST", f"/accounts/{ACCOUNT_ID}/d1/database/{D1_ID}/query",
-                {"sql": "SELECT COUNT(*) AS n, MIN(created_at) AS first_at, MAX(created_at) AS last_at FROM messages"})
-        row = r["result"][0]["results"][0]
-        ok("留言板留言总数", f"{row['n']} 条（首 {row['first_at']} / 末 {row['last_at']}）")
-    except urllib.error.HTTPError:
-        denied("留言板 D1", "/accounts/{a}/d1/database/{id}/query")
-    except Exception as e:
-        print(f"[?]   留言板查询失败: {e}")
-
     print("\n说明：标 [无权限] 的项需要令牌带对应读权限。"
           "\n创建令牌时按需勾选：Account > Workers Analytics / Account Analytics（读），"
-          "Zone > Analytics（读），Account > D1（读），Account > Cloudflare Web Analytics（读）。")
+          "Zone > Analytics（读），Account > Cloudflare Web Analytics（读）。")
 
 
 if __name__ == "__main__":

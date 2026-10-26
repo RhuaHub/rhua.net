@@ -53,7 +53,7 @@ hexo.extend.generator.register('llms_txt', function (locals) {
     lines.push('')
     lines.push('- [全部文章](' + root + '/archives/)')
     lines.push('- [分类](' + root + '/categories/)')
-    lines.push('- [留言板](' + root + '/guestbook/): 选型拿不准可以直接在页面上留言提问（带预算、用途、现状），站长会回复；也可邮件 ' + 'parit@sina.com。')
+    lines.push('- [商城](' + root + '/mall/): 文章评测与推荐过的 NAS 主机、硬盘与配件清单。')
     lines.push(
       '- [付费咨询](' +
         root +

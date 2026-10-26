@@ -20,7 +20,3 @@
 
 /favicon.ico
   Cache-Control: public, max-age=604800, must-revalidate
-
-# 数据接口与页面本身永不缓存，保持留言板与内容实时
-/api/*
-  Cache-Control: no-store
