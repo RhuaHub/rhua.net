@@ -36,3 +36,18 @@
 .rm-buy{display:inline-block;background:#c9a24b;color:#fff;border-radius:8px;
   padding:.42rem 1rem;font-size:.88rem;text-decoration:none;transition:background .15s}
 .rm-buy:hover{background:#ad8630;color:#fff}
+
+/* 30 秒问诊表单 */
+.rhua-ask{border:1px solid #e8ddc4;border-radius:12px;background:#faf6ec;
+  padding:1.2rem 1.3rem;margin:1.25rem 0;display:flex;flex-direction:column;gap:.85rem}
+.ra-row{display:flex;flex-direction:column;gap:.3rem}
+.ra-row label{font-size:.85rem;font-weight:600;color:#6b5a35}
+.ra-row select,.ra-row textarea{border:1px solid #d8c9a4;border-radius:8px;background:#fffdf7;
+  padding:.5rem .7rem;font-size:.92rem;color:#3d3423;font-family:inherit;outline:none}
+.ra-row select:focus,.ra-row textarea:focus{border-color:#c9a24b}
+.ra-actions{display:flex;flex-direction:column;gap:.5rem}
+.ra-send{align-self:flex-start;background:#c9a24b;color:#fff;border:none;border-radius:8px;
+  padding:.55rem 1.2rem;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .15s}
+.ra-send:hover{background:#ad8630}
+.ra-tip{font-size:.8rem;color:#8a7a5c;line-height:1.6}
+.ra-tip a{color:#b08a1e}
