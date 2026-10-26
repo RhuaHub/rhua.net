@@ -51,3 +51,17 @@
 .ra-send:hover{background:#ad8630}
 .ra-tip{font-size:.8rem;color:#8a7a5c;line-height:1.6}
 .ra-tip a{color:#b08a1e}
+
+/* 问诊结果兜底区 */
+.ra-out{display:none;border:1px solid #e0d2ac;border-radius:10px;background:#fffdf6;
+  padding:.85rem .95rem;margin-top:.2rem}
+.ra-out-head{font-size:.82rem;color:#6b5a35;margin-bottom:.5rem}
+.ra-out-head a{color:#b08a1e;font-weight:600}
+.ra-out-text{width:100%;box-sizing:border-box;border:1px solid #ded0ab;border-radius:8px;
+  background:#fff;padding:.55rem .65rem;font-size:.82rem;line-height:1.55;color:#3d3423;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}
+.ra-out-actions{display:flex;gap:.6rem;align-items:center;margin-top:.55rem;flex-wrap:wrap}
+.ra-copy{background:#c9a24b;color:#fff;border:none;border-radius:7px;padding:.4rem .95rem;
+  font-size:.82rem;font-weight:600;cursor:pointer}
+.ra-copy:hover{background:#ad8630}
+.ra-mail{font-size:.82rem;color:#8a7a5c;text-decoration:underline}

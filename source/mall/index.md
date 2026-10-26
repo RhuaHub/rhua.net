@@ -6,7 +6,7 @@ cover: /img/cover/cover-price-tiers.jpg
 cover_type: img
 ---
 
-<link rel="stylesheet" href="/css/mall.css">
+<link rel="stylesheet" href="/css/mall.css?v=20261026c">
 
 这里没有一万件商品，只有**文章里写过、比过、推荐过的那一小部分**。每件商品都挂着出处——为什么选它，点「选型理由」里的文章链接去看完整分析。
 
@@ -68,8 +68,8 @@ cover_type: img
 
 **说明**：本页链接为电商推广链接，从这里跳转购买的价格与你自己搜到的完全一致，平台会给站长一点佣金，不影响你多花一分钱——这也是这个站能持续免费写下去的方式。选型判断只基于产品本身，佣金改变不了任何一条推荐。
 
-<script src="/js/mall.js" defer></script>
-<script src="/js/mall-ask.js" defer></script>
+<script src="/js/mall.js?v=20261026c" defer></script>
+<script src="/js/mall-ask.js?v=20261026c" defer></script>
 
 <script type="application/ld+json">
 {
