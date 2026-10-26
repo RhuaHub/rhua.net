@@ -2,7 +2,7 @@
  * 商城商品数据校验（构建期守卫）
  *
  * 为什么需要：
- *   /mall/ 的商品全在 source/mall/products.json 里手写，一旦少个逗号、字段拼错、
+ *   /mall/ 的商品全在 source/_data/mall-products.json 里手写，一旦少个逗号、字段拼错、
  *   或者 article 指向的文章 URL 改过名，mall.js 会静默渲染出空列表或死链——
  *   页面上看不出来，只有访客点不动才发现。这个脚本把这类错误提前到构建阶段，
  *   有错就让构建失败，坏数据永远上不了线。
@@ -24,7 +24,7 @@ var fs = require('fs');
 var path = require('path');
 
 var ROOT = path.resolve(__dirname, '..');
-var DATA_FILE = path.join(ROOT, 'source/mall/products.json');
+var DATA_FILE = path.join(ROOT, 'source/_data/mall-products.json');
 var POSTS_DIR = path.join(ROOT, 'source/_posts');
 var PUBLIC_DIR = path.join(ROOT, 'public');
 
@@ -427,7 +427,7 @@ function runCli() {
   if (result.errors.length) {
     console.error('\n商城商品数据校验未通过（' + result.errors.length + ' 个错误，' + result.warnings.length + ' 个提醒）：');
     console.error(out);
-    console.error('\n修复 source/mall/products.json 后重跑。\n');
+    console.error('\n修复 source/_data/mall-products.json 后重跑。\n');
     process.exit(1);
   }
 
@@ -451,7 +451,7 @@ function failBuild(headline, result) {
     result.warnings.forEach(function (w) { hexo.log.warn('  ⚠ ' + w); });
   }
   hexo.log.error('');
-  hexo.log.error('文件：source/mall/products.json　修好后重新构建；本地可先跑 npm run validate:products 自查。');
+  hexo.log.error('文件：source/_data/mall-products.json　修好后重新构建；本地可先跑 npm run validate:products 自查。');
   hexo.log.error('');
 
   var cmd = hexo.env && hexo.env.cmd;
@@ -460,7 +460,7 @@ function failBuild(headline, result) {
     process.exit(1);
   }
   // server / deploy 等模式不杀进程，只抛错让调用方知道
-  throw new Error('source/mall/products.json 校验失败，见上方错误列表');
+  throw new Error('source/_data/mall-products.json 校验失败，见上方错误列表');
 }
 
 if (typeof hexo !== 'undefined' && hexo && hexo.extend) {

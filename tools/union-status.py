@@ -96,7 +96,7 @@ def main():
 
     print('')
     print('京东联盟 · 推广位 PID 接链状态')
-    print('  数据文件：source/mall/products.json')
+    print('  数据文件：source/_data/mall-products.json')
     print('  当前 PID：%s' % (pid or '（未填写）'))
     print('  已接联盟链接：%d / %d' % (len(done), len(rows)))
     print('')
