@@ -31,8 +31,14 @@ var PUBLIC_DIR = path.join(ROOT, 'public');
 var ID_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 var DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 var REQUIRED = ['id', 'cat', 'name', 'spec', 'price', 'reason', 'article', 'link'];
-var OPTIONAL = ['tag'];
+var OPTIONAL = ['tag', 'sku'];
 var STALE_DAYS = 30;
+
+// 京东联盟：链接分三类。接了联盟才有佣金，直链跳过去只是「帮访客找到」。
+// 这条不做成错误 —— 免得哪天联盟没接成，商城整页都发不出去。
+var UNION_HOSTS = ['u.jd.com', 'union-click.jd.com', '3.cn'];
+var PLAIN_HOSTS = ['search.jd.com', 'item.jd.com', 'so.m.jd.com'];
+var PID_RE = /^\d+_\d+_\d+$/;
 
 /* ---------- 工具 ---------- */
 
@@ -73,6 +79,23 @@ function describeJsonError(err, raw) {
 
 function daysBetween(a, b) {
   return Math.floor((b.getTime() - a.getTime()) / 86400000);
+}
+
+function hostOf(url) {
+  var m = /^https?:\/\/([^/?#]+)/i.exec(String(url || ''));
+  return m ? m[1].toLowerCase() : '';
+}
+
+// 'union' 已接联盟 / 'plain' 京东直链无佣 / 'other' 其他站点 / 'bad' 不是有效 URL
+function classifyLink(url) {
+  var h = hostOf(url);
+  if (!h) return 'bad';
+  var hit = function (list) {
+    return list.some(function (d) { return h === d || h.slice(-(d.length + 1)) === '.' + d; });
+  };
+  if (hit(UNION_HOSTS)) return 'union';
+  if (hit(PLAIN_HOSTS)) return 'plain';
+  return 'other';
 }
 
 /* ---------- 读取文章真实 URL ---------- */
@@ -185,6 +208,25 @@ function validate(opts) {
     if (Object.keys(cats).length === 0) errors.push('顶层 cats 至少需要一个分类');
   }
 
+  // 京东联盟配置（可选）：填了之后链路才算真正打通，所以格式要卡死。
+  if ('union' in data) {
+    var u = data.union;
+    if (!u || typeof u !== 'object' || Array.isArray(u)) {
+      errors.push('顶层 union 必须是对象，形如 { "pid": "123_456_789", "channel": "导购媒体" }');
+    } else {
+      if ('pid' in u && u.pid !== '') {
+        if (!isNonEmptyString(u.pid)) {
+          errors.push('union.pid 必须是非空字符串（没拿到就先写 ""）');
+        } else if (!PID_RE.test(u.pid.trim())) {
+          errors.push('union.pid 格式不对：应是三段数字用下划线连接，如 52267001_149532_2029810089，当前 ' + JSON.stringify(u.pid));
+        }
+      }
+      if ('channel' in u && !isNonEmptyString(u.channel)) {
+        errors.push('union.channel 不能为空（网站 / 导购媒体）');
+      }
+    }
+  }
+
   if (!Array.isArray(data.products)) {
     errors.push('顶层 products 必须是数组');
     return { errors: errors, warnings: warnings };
@@ -194,6 +236,8 @@ function validate(opts) {
   // 3. 逐件校验
   var seenIds = {};
   var usedCats = {};
+  var plainLinks = [];
+  var otherLinks = [];
 
   data.products.forEach(function (p, i) {
     var at = 'products[' + i + ']';
@@ -281,6 +325,26 @@ function validate(opts) {
         errors.push(label + '：link 不能为空');
       } else if (!/^https?:\/\//i.test(p.link)) {
         errors.push(label + '：link 必须以 http:// 或 https:// 开头，当前 ' + JSON.stringify(p.link));
+      } else {
+        var kind = classifyLink(p.link);
+        if (kind === 'bad') {
+          errors.push(label + '：link 解析不出域名，当前 ' + JSON.stringify(p.link));
+        } else if (kind === 'plain') {
+          plainLinks.push(label);
+        } else if (kind === 'other') {
+          otherLinks.push(label + ' → ' + hostOf(p.link));
+        }
+      }
+    }
+
+    // sku（可选）：京东商品 ID，纯数字。有了它去联盟后台能直接定位商品，不用靠标题搜。
+    if ('sku' in p && p.sku !== null && p.sku !== '') {
+      if (typeof p.sku === 'string' && /^\d{5,20}$/.test(p.sku)) {
+        // ok
+      } else if (typeof p.sku === 'number' && isFinite(p.sku)) {
+        errors.push(label + '：sku 应该写成字符串（数字会自动丢精度/变科学计数法），当前 ' + p.sku);
+      } else {
+        errors.push(label + '：sku 应是纯数字字符串（京东商品 ID），当前 ' + JSON.stringify(p.sku));
       }
     }
   });
@@ -291,6 +355,18 @@ function validate(opts) {
       warnings.push('分类 "' + k + '"（' + cats[k] + '）下没有商品，前端会出现一个点开为空的标签');
     }
   });
+
+  // 联盟链接覆盖情况：不拦构建，但要让人知道现在点出去赚不到钱。
+  if (plainLinks.length) {
+    warnings.push(plainLinks.length + ' 件商品还是京东直链，下单不计佣（' +
+      plainLinks.join('、') + '）——接到 PID 后在联盟后台领链接替换');
+  }
+  if (otherLinks.length) {
+    warnings.push('链接不在京东域内，确认是有意的：' + otherLinks.join('；'));
+  }
+  if (data.union && isNonEmptyString(data.union.pid) && plainLinks.length) {
+    warnings.push('union.pid 已填，但仍有 ' + plainLinks.length + ' 件商品没换成联盟链接，佣金会漏');
+  }
 
   // 4. article 指向的文章是否存在
   //    默认在生成后跑（用真实路由最准确）；生成前用 skipArticleCheck 跳过，

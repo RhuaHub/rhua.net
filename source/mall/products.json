@@ -1,6 +1,11 @@
 {
   "updated": "2026-10-26",
   "note": "价格为参考价，实时价以电商页为准。链接为京东搜索直链，接入京东联盟后替换为带 PID 的转链。",
+  "union": {
+    "pid": "",
+    "channel": "导购媒体",
+    "note": "PID 到手后填到 pid 字段（格式 联盟ID_网站ID_推广位ID）；channel 记录当初报的渠道类型，便于日后对账。"
+  },
   "products": [
     {
       "id": "ugreen-dxp4800-plus",
