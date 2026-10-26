@@ -43,7 +43,9 @@
         '<div class="ra-out-actions">' +
         '<button type="button" class="ra-copy" id="ra-copy">复制内容</button>' +
         '<a class="ra-mail" id="ra-mail" href="#">用邮件客户端打开</a>' +
-        '</div>';
+        '</div>' +
+        // 刚填完需求这一刻意向最高，把付费咨询放这儿，比埋在提示小字里有效得多
+        '<p class="ra-next">不想等邮件来回？<a href="/consult/">付费咨询 · 一对一选型</a> ¥99 起，先沟通后付款。</p>';
       var actions = document.querySelector('.ra-actions');
       if (actions && actions.parentNode) actions.parentNode.insertBefore(out, actions.nextSibling);
       else document.getElementById('rhua-ask').appendChild(out);

@@ -65,3 +65,18 @@
   font-size:.82rem;font-weight:600;cursor:pointer}
 .ra-copy:hover{background:#ad8630}
 .ra-mail{font-size:.82rem;color:#8a7a5c;text-decoration:underline}
+/* 结果区下方的付费咨询出口：刚填完需求时意向最高 */
+.ra-next{margin:.75rem 0 0;padding-top:.6rem;border-top:1px dashed #e2d6b6;
+  font-size:.82rem;color:#6b5a35}
+.ra-next a{color:#b08a1e;font-weight:600}
+
+/* 商城页：商品清单下方的咨询出口 */
+.mx-consult{margin:1.6rem 0 .4rem;padding:1.1rem 1.2rem;border:1px solid #e6d9ba;
+  border-left:4px solid #c9a24b;border-radius:10px;background:#fffdf6}
+.mx-consult p{margin:0 0 .7rem;font-size:.92rem;line-height:1.75;color:#5c5142}
+.mx-consult p:last-child{margin-bottom:0;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.mx-consult-btn{display:inline-block;background:#c9a24b;color:#fff !important;border-radius:8px;
+  padding:.5rem 1.1rem;font-size:.9rem;font-weight:600;text-decoration:none !important;
+  transition:background .18s}
+.mx-consult-btn:hover{background:#ad8630}
+.mx-consult-note{font-size:.8rem;color:#8a8175}

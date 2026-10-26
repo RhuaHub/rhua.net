@@ -6,7 +6,7 @@ cover: /img/cover/cover-price-tiers.jpg
 cover_type: img
 ---
 
-<link rel="stylesheet" href="/css/mall.css?v=20261026c">
+<link rel="stylesheet" href="/css/mall.css?v=20261026d">
 
 这里没有一万件商品，只有**文章里写过、比过、推荐过的那一小部分**。每件商品都挂着出处——为什么选它，点「选型理由」里的文章链接去看完整分析。
 
@@ -16,6 +16,11 @@ cover_type: img
   <div class="rm-tabs" id="rm-tabs"></div>
   <div class="rm-grid" id="rm-grid"></div>
   <div class="rm-status" id="rm-status">正在加载清单…</div>
+</div>
+
+<div class="mx-consult">
+  <p><strong>看得越多越挑不出来？</strong>这 12 件是「各自档位里最值得买的」，但哪一台适合你家，取决于预算、几口人、要跑什么。把这个告诉我，我直接给你排一套能下单的配置。</p>
+  <p><a class="mx-consult-btn" href="/consult/">让我帮你定一台 →</a><span class="mx-consult-note">¥99 起，先沟通后付款，不合适不勉强</span></p>
 </div>
 
 <noscript>
@@ -68,8 +73,8 @@ cover_type: img
 
 **说明**：本页链接为电商推广链接，从这里跳转购买的价格与你自己搜到的完全一致，平台会给站长一点佣金，不影响你多花一分钱——这也是这个站能持续免费写下去的方式。选型判断只基于产品本身，佣金改变不了任何一条推荐。
 
-<script src="/js/mall.js?v=20261026c" defer></script>
-<script src="/js/mall-ask.js?v=20261026c" defer></script>
+<script src="/js/mall.js?v=20261026d" defer></script>
+<script src="/js/mall-ask.js?v=20261026d" defer></script>
 
 <script type="application/ld+json">
 {
