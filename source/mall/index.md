@@ -21,6 +21,7 @@ cover_type: img
 <div class="mx-consult">
   <p><strong>看得越多越挑不出来？</strong>这 12 件是「各自档位里最值得买的」，但哪一台适合你家，取决于预算、几口人、要跑什么。把这个告诉我，我直接给你排一套能下单的配置。</p>
   <p><a class="mx-consult-btn" href="/consult/">让我帮你定一台 →</a><span class="mx-consult-note">¥99 起，先沟通后付款，不合适不勉强</span></p>
+  <p class="mx-sub">预算紧张或想自己拿主意：<a href="/pack/">¥39 的《选购决策包》</a>把决策树、档位表、硬盘清单和下单核对清单整理成了一本 17 页的手册，买过再咨询可全额抵扣。</p>
 </div>
 
 <noscript>

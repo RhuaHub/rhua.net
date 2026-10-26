@@ -80,3 +80,6 @@
   transition:background .18s}
 .mx-consult-btn:hover{background:#ad8630}
 .mx-consult-note{font-size:.8rem;color:#8a8175}
+.mx-sub{margin-top:.7rem !important;padding-top:.7rem;border-top:1px dashed #e2d6b6 !important;
+  font-size:.85rem !important;color:#6b5a35 !important}
+.mx-sub a{color:#b08a1e;font-weight:600}
