@@ -23,6 +23,7 @@ menu:
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
   留言板: /guestbook/ || fas fa-comment-dots
+  商城: /mall/ || fas fa-cart-shopping
   关于: /about/ || fas fa-user
 
 # --------------------------------------

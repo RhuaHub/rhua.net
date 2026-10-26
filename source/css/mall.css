@@ -1,0 +1,38 @@
+/* NAS 选型笔记 · 商城 —— 暖金主题 */
+.rhua-mall{margin:1.5rem 0}
+.rm-status{color:#8a7a5c;font-size:.9rem;padding:1rem 0}
+
+/* 分类标签 */
+.rm-tabs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.rm-tab{border:1px solid #e2d5b8;background:#faf6ec;color:#6b5a35;border-radius:999px;
+  padding:.4rem 1.05rem;font-size:.9rem;cursor:pointer;transition:all .15s ease}
+.rm-tab:hover{border-color:#c9a24b}
+.rm-tab.rm-active{background:#c9a24b;border-color:#c9a24b;color:#fff;font-weight:600}
+
+/* 商品网格 */
+.rm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+@media (max-width:640px){.rm-grid{grid-template-columns:1fr}}
+
+.rm-card{border:1px solid #e8ddc4;border-radius:12px;background:#fffdf7;
+  padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;
+  transition:box-shadow .15s ease,transform .15s ease}
+.rm-card:hover{box-shadow:0 4px 18px rgba(180,140,50,.14);transform:translateY(-2px)}
+
+.rm-card-head{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem}
+.rm-name{font-weight:700;font-size:1.02rem;color:#3d3423;margin:0}
+.rm-tag{flex-shrink:0;font-size:.72rem;color:#9c7c1e;background:#f5ecd2;
+  border-radius:6px;padding:.15rem .5rem;white-space:nowrap}
+.rm-spec{font-size:.82rem;color:#8a7a5c;margin:0}
+
+.rm-reason{font-size:.9rem;color:#5a4f3a;line-height:1.65;margin:.15rem 0 .25rem}
+.rm-article{font-size:.82rem;margin:0}
+.rm-article a{color:#b08a1e;text-decoration:none;border-bottom:1px dashed #d8bd6a}
+.rm-article a:hover{color:#8f6f10}
+
+.rm-foot{display:flex;justify-content:space-between;align-items:center;
+  margin-top:auto;padding-top:.6rem;border-top:1px dashed #ecdfc0}
+.rm-price{font-size:1.15rem;font-weight:700;color:#a4761a}
+.rm-price small{font-size:.7rem;font-weight:400;color:#a8987a;margin-left:.3rem}
+.rm-buy{display:inline-block;background:#c9a24b;color:#fff;border-radius:8px;
+  padding:.42rem 1rem;font-size:.88rem;text-decoration:none;transition:background .15s}
+.rm-buy:hover{background:#ad8630;color:#fff}
