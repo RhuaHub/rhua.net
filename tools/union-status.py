@@ -22,7 +22,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, 'source', 'mall', 'products.json')
+DATA = os.path.join(ROOT, 'source', '_data', 'mall-products.json')
 
 UNION_HOSTS = ('u.jd.com', 'union-click.jd.com', '3.cn', 'item.m.jd.com')
 PLAIN_HOSTS = ('search.jd.com', 'item.jd.com', 'so.m.jd.com')
