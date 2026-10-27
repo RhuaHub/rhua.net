@@ -115,17 +115,44 @@ def main():
     except urllib.error.HTTPError:
         denied("Web Analytics（真实 UV/PV）", "/accounts/{a}/rum/site_info/list")
 
-    # 5. Zone HTTP 分析
+    # 5. Zone 流量分析 —— 走 GraphQL httpRequests1dGroups
+    # （REST /zones/{z}/analytics/dashboard 需要单独的 Zone Analytics 读权限，
+    #   当前只读令牌只对 GraphQL 端点放行，因此统一走这里）
     try:
-        r = req("GET", f"/zones/{ZONE_ID}/analytics/dashboard?since=-{DAYS * 24 * 60}&continuous=true")
-        t = r["result"]["totals"]
-        ok(f"Zone HTTP 请求（近 {DAYS} 天）",
-           f"requests={t['requests']['all']}, pageviews={t.get('pageviews', {}).get('all', 'N/A')}, "
-           f"uniques={t['uniques']['all']}")
+        from datetime import date, timedelta as _td
+        d0 = (datetime.now(timezone.utc) - timedelta(days=DAYS)).date().isoformat()
+        d1 = datetime.now(timezone.utc).date().isoformat()
+        gql = {
+            "query": (
+                'query { viewer { zones(filter:{zoneTag:"%s"}) {'
+                " httpRequests1dGroups(limit:62, orderBy:[date_ASC],"
+                ' filter:{date_geq:"%s", date_leq:"%s"}) {'
+                " dimensions{date} sum{pageViews requests} uniq{uniques} } } } }"
+            ) % (ZONE_ID, d0, d1)
+        }
+        data = json.dumps(gql).encode()
+        r = urllib.request.Request("https://api.cloudflare.com/client/v4/graphql",
+                                   data=data, method="POST",
+                                   headers={"Authorization": f"Bearer {TOKEN}",
+                                            "Content-Type": "application/json"})
+        with urllib.request.urlopen(r, timeout=30) as resp:
+            g = json.loads(resp.read().decode())
+        if g.get("errors"):
+            raise RuntimeError(str(g["errors"])[:200])
+        rows = g["data"]["viewer"]["zones"][0]["httpRequests1dGroups"]
+        tp = sum(x["sum"]["pageViews"] for x in rows)
+        tu = sum(x["uniq"]["uniques"] for x in rows)
+        n = max(len(rows), 1)
+        ok(f"Zone 流量（近 {DAYS} 天，{n} 天有数据）",
+           f"PV={tp}, UV={tu}, 日均 PV={tp // n}, UV={tu // n}")
+        # 最近 7 天逐日明细
+        for x in rows[-7:]:
+            print(f"       {x['dimensions']['date']}  PV {x['sum']['pageViews']:>5}  "
+                  f"UV {x['uniq']['uniques']:>5}")
     except urllib.error.HTTPError:
-        denied("Zone HTTP 分析（请求/独立访客）", "/zones/{z}/analytics/dashboard")
+        denied("Zone 流量分析（PV/UV）", "/graphql httpRequests1dGroups")
     except Exception as e:
-        print(f"[?]   Zone 分析解析失败: {e}")
+        print(f"[?]   Zone 流量解析失败: {e}")
 
     print("\n说明：标 [无权限] 的项需要令牌带对应读权限。"
           "\n创建令牌时按需勾选：Account > Workers Analytics / Account Analytics（读），"
