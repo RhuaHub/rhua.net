@@ -1,7 +1,7 @@
 ---
 title: 双 11 买的 NAS 到手了：第一周该做的 7 件事（和 2 件别急着做的事）
 date: 2026-10-24 08:00:00
-cover: /img/cover/cover-first-week.png
+cover: /img/cover/cover-first-week.jpg
 description: 双 11 下单的 NAS 到手后，第一周按这个顺序做：先验机、先组 RAID、先做异地备份，再谈折腾。7 件必做的事和 2 件别急的事，附阵列选型、目录结构、远程访问安全与配件补账，一次讲清。
 keywords: NAS到手设置,NAS新手,NAS初始化,RAID1,RAID5,异地备份,3-2-1备份,远程访问,双11 NAS
 categories:

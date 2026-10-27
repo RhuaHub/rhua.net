@@ -53,7 +53,11 @@ hexo.extend.generator.register('llms_txt', function (locals) {
     lines.push('')
     lines.push('- [全部文章](' + root + '/archives/)')
     lines.push('- [分类](' + root + '/categories/)')
-    lines.push('- [商城](' + root + '/mall/): 文章评测与推荐过的 NAS 主机、硬盘与配件清单。')
+    lines.push(
+      '- [选购决策包](' +
+        root +
+        '/pack/): ¥39 的 17 页 PDF 选购手册——决策树、预算档位表、12 台机型对比矩阵、CMR 硬盘速查、容量与 RAID 公式、购买时机、下单前核对清单；价格核对至 2026-10-15，买过再咨询可全额抵扣。'
+    )
     lines.push(
       '- [付费咨询](' +
         root +

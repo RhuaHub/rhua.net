@@ -14,6 +14,9 @@ sitemap: false
   .mall-closed a{color:#b08a1e;font-weight:600}
 </style>
 
+<!-- 暂停开放期间不希望被收录；严格来说 meta 应在 head 里，这里加上是给会整页解析的引擎兜底 -->
+<meta name="robots" content="noindex, follow">
+
 <div class="mall-closed">
   <div class="icon">🛠️</div>
   <h3>清单正在重新整理</h3>
