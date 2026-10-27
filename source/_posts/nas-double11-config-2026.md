@@ -1,7 +1,7 @@
 ---
 title: 2026 双 11 NAS 配置单：¥4500 / ¥6700 / ¥8500 三套，按今天实价算好
 date: 2026-10-27 12:40:00
-cover: /img/cover/cover-double11-storage-split.jpg
+cover: /img/cover/cover-double11-config.jpg
 description: 双 11 买 NAS 最怕"机器便宜了、硬盘才是大头"。这篇按 2026-10-27 实测的京东页面价，算好三套能直接照抄下单的配置单：¥4500 入门即主力、¥6700 稳定省心、¥8500 折腾上限，每套附总价拆解、适用人群和下单顺序。
 keywords: 双11 NAS配置单,2026 NAS推荐,NAS多少钱,绿联DXP4800,群晖DS423+,威联通TS-464C2,NAS配置,家庭NAS方案,双11买NAS
 categories:
