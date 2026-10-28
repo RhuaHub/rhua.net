@@ -6,8 +6,7 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server",
-    "validate:products": "node scripts/validate-products.js"
+    "server": "hexo server"
   },
   "hexo": {
     "version": "8.1.2"
