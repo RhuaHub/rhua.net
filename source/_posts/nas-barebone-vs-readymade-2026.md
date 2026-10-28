@@ -5,7 +5,7 @@ cover: /img/cover/cover-barebone.jpg
 description: ¥999 的准系统和 ¥2199 的成品 NAS 差在哪？先把不适合准系统的人排除掉，再算清硬件差价、系统折腾成本和售后这笔账。
 keywords: 准系统,成品NAS,NAS对比,华强北NAS,飞牛fnOS,Unraid,NAS自建,NAS选购
 categories:
-  - NAS 选型
+  - 选购参考
 tags:
   - 准系统
   - 自建

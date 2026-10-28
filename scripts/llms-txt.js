@@ -33,12 +33,12 @@ hexo.extend.generator.register('llms_txt', function (locals) {
     lines.push(
       oneLine(
         config.description ||
-          '本站只做成品 NAS 单品的选购分析：先讲缺点和不适合谁，再给价格锚点、渠道差价与下单前清单。',
+          '本站是个人技术博客，写 NAS 与家庭服务器上的功能实现：Docker 自托管、相册与影音、内网穿透、备份与监控。每篇都说明适用设备与系统版本、给出可复现的命令与配置，并记录踩过的坑。不写导购软文，不接联盟推广。',
         300
       )
     )
     lines.push('')
-    lines.push('内容规则：价格均标注核对日期，随时点价，仅供参考；不挂任何推广链接。')
+    lines.push('内容规则：教程均基于作者本人设备实测，软件版本会变，读前先看文章日期；站内不挂推广链接、不写付费软文。')
     lines.push('')
     lines.push('## 文章')
     lines.push('')
@@ -52,17 +52,8 @@ hexo.extend.generator.register('llms_txt', function (locals) {
     lines.push('## 其他')
     lines.push('')
     lines.push('- [全部文章](' + root + '/archives/)')
-    lines.push('- [分类](' + root + '/categories/)')
-    lines.push(
-      '- [选购决策包](' +
-        root +
-        '/pack/): ¥39 的 17 页 PDF 选购手册——决策树、预算档位表、12 台机型对比矩阵、CMR 硬盘速查、容量与 RAID 公式、购买时机、下单前核对清单；价格核对至 2026-10-15，买过再咨询可全额抵扣。'
-    )
-    lines.push(
-      '- [付费咨询](' +
-        root +
-        '/consult/): 一对一 NAS 选型咨询，¥99 快问快答 / ¥299 完整方案（2–3 套配置 + 硬盘清单 + 购买时机 + 1 次追问）/ ¥699 全程陪跑；先沟通后付款，不代购不经手货款。'
-    )
+    lines.push('- [折腾手记](' + root + '/categories/tinker/): 功能实现与踩坑记录')
+    lines.push('- [选购参考](' + root + '/categories/buying/): 盘位、硬盘、价格节奏等背景知识')
     lines.push('- [关于本站](' + root + '/about/)')
     lines.push('- [免责声明](' + root + '/disclaimer/)')
     lines.push('')

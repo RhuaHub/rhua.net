@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: NAS 选型笔记
-subtitle: '成品 NAS · 私有云 · 家庭存储，只讲怎么选'
-description: 'NAS 选型笔记 —— 成品 NAS 与私有云选购参考：先讲清楚哪些人不该买，再比价格、盘位、系统与售后。'
-keywords: NAS,NAS选购,成品NAS,私有云,家庭存储,网络存储,群晖,威联通,绿联,极空间,NAS选型笔记
+title: NAS 折腾笔记
+subtitle: '不教你怎么买，只教你怎么玩'
+description: 'Joey 的个人博客：记录 NAS 上的功能实现——Docker 自托管、相册与影音、内网穿透、备份与监控。每篇都写清楚为什么这么做、命令怎么敲、坑在哪。'
+keywords: NAS折腾,NAS教程,NAS功能,Docker部署,自托管服务,私有云,家庭服务器,内网穿透,Immich,Jellyfin,Tailscale,Alist,群晖,绿联,PVE,软路由
 author: Joey
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -71,7 +71,10 @@ index_generator:
 
 # Category & Tag
 default_category: uncategorized
+# 分类名映射成英文 slug，URL 干净：/categories/tinker/ 而非 /categories/折腾手记/
 category_map:
+  折腾手记: tinker
+  选购参考: buying
 tag_map:
 
 # Metadata elements
@@ -107,25 +110,23 @@ theme: butterfly
 # 改这里就能改文案与按钮，不用改代码；enable: false 则整站不渲染
 post_cta:
   enable: true
-  title: 还有拿不准的地方？
-  desc: 微信扫码关注公众号，或直接搜一搜「Rhua NAS」。急着要答案的，留言问诊免费，也可以要一份付费的完整配置方案。
+  title: 跑不通，或者你机器上表现不一样？
+  desc: 每台机器的系统版本、权限、磁盘布局都不一样，文章里的命令不一定一次就对。踩坑了直接邮件问我，我看到会回。
   qr: /img/qr-wechat.jpg # 公众号「Rhua NAS」关注码，裁自微信搜一搜官方物料（400x400，46KB）
   qr_alt: 微信扫码关注公众号 Rhua NAS
-  # 出口：低门槛在前，付费成交在后（primary 为高亮的主推出口）
+  # 出口：博客式收尾——先让人能提问，再让人能继续读
   links:
-    - text: ¥39 选购决策包
-      url: /pack/
-    - text: 付费咨询 · 一对一选型
-      url: /consult/
-      primary: true
-    - text: 邮件免费问
+    - text: 邮件聊
       url: mailto:parit@sina.com
+      primary: true
+    - text: 看全部折腾记录
+      url: /archives/
   button_text: '' # links 为空时的兜底按钮，留空即不渲染
   button_url: ''
 
 # 首页的分享缩略图。主题在首页没有 cover 时会把 og:image 退回头像图标，
 # 分享到微信很难看 —— 这里指定一张现成的封面顶上（只作用于首页，不影响文章各自封面）
-index_og_image: /img/cover/cover-price-tiers.jpg
+index_og_image: /img/cover/cover-immich.png
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

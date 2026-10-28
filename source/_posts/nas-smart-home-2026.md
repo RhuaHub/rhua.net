@@ -5,7 +5,7 @@ cover: /img/cover/cover-smart-home.jpg
 description: 2026 年 NAS 的智能家居玩法拆解——家庭监控录像存储最实在，Home Assistant 中控其次，相册影音是顺带。附三条监控路线对比、免费路数表、容量算法，以及一个反直觉的结论：监控盘比普通 NAS 盘贵一半。
 keywords: NAS智能家居,家庭监控存储,Home Assistant,ONVIF,RTSP,绿联监控中心,极空间监控,群晖Surveillance Station,监控盘,紫盘,酷鹰
 categories:
-  - NAS 选型
+  - 折腾手记
 tags:
   - 智能家居
   - 家庭监控

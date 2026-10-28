@@ -45,7 +45,7 @@ DEFAULT_SINCE = "2026 年 10 月 2 日"
 PAGE_TEMPLATE = """---
 title: 免责声明
 date: {date}
-description: 本站免责声明：只提供商品促销折扣信息，销售及售后与本站无关；不挂推广链接。
+description: 本站是个人技术博客：内容基于实测，不接联盟推广、不写软文；照做的风险自负。
 ---
 
 {before}
@@ -85,7 +85,8 @@ def footer_html(cfg, paras):
     """
     prefix = cfg.get("prefix", DEFAULT_PREFIX)
     link = cfg.get("link", DEFAULT_LINK)
-    body = "".join(paras)
+    # footer_text 优先：完整声明页可以写长，页脚只放一句短的
+    body = cfg.get("footer_text") or "".join(paras)
     style = ("display:block;text-align:center;max-width:900px;margin:0 auto;"
              "padding:0 12px;font-size:13px;line-height:1.7")
     return (f'<span class="disclaimer-inline" style="{style}">'

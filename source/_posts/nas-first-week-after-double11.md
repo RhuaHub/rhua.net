@@ -5,7 +5,7 @@ cover: /img/cover/cover-first-week.jpg
 description: 双 11 下单的 NAS 到手后，第一周按这个顺序做：先验机、先组 RAID、先做异地备份，再谈折腾。7 件必做的事和 2 件别急的事，附阵列选型、目录结构、远程访问安全与配件补账，一次讲清。
 keywords: NAS到手设置,NAS新手,NAS初始化,RAID1,RAID5,异地备份,3-2-1备份,远程访问,双11 NAS
 categories:
-  - NAS 选型
+  - 折腾手记
 tags:
   - 双11
   - NAS 入门

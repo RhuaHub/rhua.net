@@ -5,7 +5,7 @@ cover: /img/cover/cover-buy-timing.jpg
 description: 2026 年买 NAS 的时机指南——先纠一个普遍误解：NAS 不在国补全国统一目录里。机器和硬盘的降价时钟是相反方向的，等错一边两头都亏。
 keywords: NAS什么时候买,NAS国补,国补2026,双11 NAS,国补比例,NAS大促,省钱攻略
 categories:
-  - NAS 选型
+  - 选购参考
 tags:
   - 国补
   - 大促

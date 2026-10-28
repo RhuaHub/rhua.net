@@ -19,10 +19,10 @@ nav:
 
 menu:
   首页: / || fas fa-home
+  折腾手记: /categories/tinker/ || fas fa-terminal
+  选购参考: /categories/buying/ || fas fa-balance-scale
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
-  分类: /categories/ || fas fa-folder-open
-  # 商城: /mall/ || fas fa-cart-shopping   ← 暂时下架（2026-10-27），有流量后再开；数据都在 source/mall/products.json
   关于: /about/ || fas fa-user
 
 # --------------------------------------
@@ -162,7 +162,7 @@ index_top_img_height: 45vh
 
 # The subtitle on homepage
 subtitle:
-  enable: false
+  enable: true
   # Typewriter Effect
   effect: true
   # Customize typed.js
@@ -178,6 +178,9 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
+    - 不教你怎么买，只教你怎么玩
+    - Docker 自托管 · 相册 · 影音 · 内网穿透
+    - 每篇都写清楚：为什么这么做、命令怎么敲、坑在哪
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -281,7 +284,7 @@ footer:
     enable: false
     version: true
   # DISCLAIMER:BEGIN 由 tools/sync-disclaimer.py 从 DISCLAIMER.md 生成，请勿手改
-  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>本站仅提供商品促销折扣信息，商品的销售、发货与售后均由商家负责。站内暂未接入任何联盟推广，部分文章外链指向电商平台商品页，均为公开链接，推荐与收入无关；页面价格为人工核对的时点价，实际以商品页为准。未来接入推广时，会在此显著披露。付费咨询提供的是选型建议，不构成质量保证或购买承诺；站长不代购、不经手货款；机器本身的质量与售后问题请找厂商。虚拟服务一经交付不支持退款，沟通阶段可随时中止。</span>'
+  custom_text: '<span class="disclaimer-inline" style="display:block;text-align:center;max-width:900px;margin:0 auto;padding:0 12px;font-size:13px;line-height:1.7"><b><a href="/disclaimer/">免责声明：</a></b>本站是个人技术博客，内容基于特定设备与系统版本的实测，不构成购买建议；站内不接联盟推广、不挂返佣链接、不写付费软文。照做文章里的命令前请自行评估风险，尤其是删分区、组 RAID、格式化这类操作，动手前务必备份。</span>'
   # DISCLAIMER:END
 
 # --------------------------------------

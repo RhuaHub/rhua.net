@@ -5,7 +5,7 @@ cover: /img/cover/cover-dxp4800-plus.jpg
 description: 绿联 DXP4800 Plus（¥3699）比 DXP4800 贵 ¥400–700，多的是 8505 CPU、万兆网口和 64GB 内存上限。先把六个缺点摆清楚，再算万兆要真正跑起来还得追加多少钱——对多数家庭，这笔钱加到硬盘上更实在。本文会给出一个反直觉结论：真需要它的人，往往不该买 8G 版。
 keywords: 绿联DXP4800 Plus,DXP4800 Plus值得买吗,DXP4800 Plus和DXP4800区别,DXP4800 Plus缺点,万兆NAS,UGOS Pro,绿联NAS,NAS选购
 categories:
-  - NAS 选型
+  - 选购参考
 tags:
   - 绿联
   - 机型对比
