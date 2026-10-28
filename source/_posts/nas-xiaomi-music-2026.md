@@ -4,8 +4,6 @@ date: 2026-10-09 20:15:00
 cover: /img/cover/cover-xiaomi-music.jpg
 description: 让小爱同学直接点播 NAS 里的音乐，2026 年只剩一条还活着的路：自托管音乐服务器 Songloft + MIoT 插件。本文拆清楚为什么 DLNA 不行、老牌方案 XiaoMusic 为什么别再新装、哪几款音箱不支持 FLAC，以及这笔账到底省不省钱。
 keywords: 小爱同学播NAS音乐,小爱音箱本地音乐,Songloft,XiaoMusic停止维护,MIoT插件,自托管音乐服务器,NAS音乐库,FLAC兼容型号,Docker音乐服务器
-categories:
-  - 折腾手记
 tags:
   - 小爱同学
   - 本地音乐

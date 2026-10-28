@@ -4,8 +4,6 @@ date: 2026-10-07 11:40:00
 cover: /img/cover/cover-hdd.jpg
 description: 2026 年 NAS 硬盘选购指南——进 RAID 的盘一律选 CMR，SMR 便宜也不要。附西数/希捷/东芝各产品线 CMR 对照、真实报价与四条避坑清单。
 keywords: NAS硬盘,CMR,SMR,西数红盘,希捷酷狼,东芝N300,NAS专用盘,硬盘选购
-categories:
-  - 选购参考
 tags:
   - 硬盘
   - CMR

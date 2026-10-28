@@ -4,8 +4,6 @@ date: 2026-10-28 21:55:00
 cover: /img/cover/cover-tailscale.png
 description: 出差在外想访问家里的 NAS，别再折腾公网 IP 和端口映射。用 Tailscale 把手机、笔记本、NAS 组成一个虚拟内网：装 Docker 容器、开子网路由、配 MagicDNS，实测直连和走中继分别是什么速度，以及密钥过期、中继卡顿两个坑。
 keywords: Tailscale NAS,外网访问NAS,内网穿透,NAS远程访问,WireGuard组网,子网路由,不用端口映射,Tailscale docker
-categories:
-  - 折腾手记
 tags:
   - Tailscale
   - 内网穿透

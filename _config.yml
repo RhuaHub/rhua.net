@@ -71,10 +71,6 @@ index_generator:
 
 # Category & Tag
 default_category: uncategorized
-# 分类名映射成英文 slug，URL 干净：/categories/tinker/ 而非 /categories/折腾手记/
-category_map:
-  折腾手记: tinker
-  选购参考: buying
 tag_map:
 
 # Metadata elements

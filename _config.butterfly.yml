@@ -21,7 +21,6 @@ menu:
   首页: / || fas fa-home
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
-  分类: /categories/ || fas fa-folder-open
   关于: /about/ || fas fa-user
 
 # --------------------------------------
@@ -328,7 +327,7 @@ aside:
     storage: 10
     avatar: true
   card_categories:
-    enable: true
+    enable: false
     # If set 0 will show all
     limit: 8
     # Choose: none / true / false
@@ -1086,8 +1085,9 @@ css_prefix: true
 inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
-    # 导航栏不显示站点名（PC 与移动端统一）；隐藏作者卡里重复的社交图标
-    - '<style>.nav-site-title{display:none}.card-info-social-icons{display:none}</style>'
+    # 导航栏不显示站点名（PC 与移动端统一）；隐藏作者卡里重复的社交图标；
+    # 站内不再使用分类，侧栏统计里的「分类」计数一并隐藏（避免指向已删除的 /categories/）
+    - '<style>.nav-site-title{display:none}.card-info-social-icons{display:none}.site-data a[href="/categories/"]{display:none}</style>'
     # 移动端导航：白底实心、横排菜单单行不换行、深色文字（与 PC 同布局）
     - '<style>@media (max-width:768px){#nav{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.08)}#nav.hide-menu #toggle-menu{display:none!important}#nav.hide-menu .menus_items{display:inline-block!important}#menus{flex:none;display:flex;justify-content:flex-end;align-items:center}#search-button .site-page span{display:none}.menus_item{display:inline-block}.menus_item .site-page i{display:none}.menus_item .site-page{padding:0 5px;font-size:12.5px;letter-spacing:0}#nav .menus_items{white-space:nowrap}#search-button .site-page{padding:0 4px}}</style>'
     # 文章末尾引导组件样式（scripts/post-cta.js 注入，配色跟随站点暖金主题）

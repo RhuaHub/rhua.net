@@ -225,10 +225,10 @@ hexo.extend.filter.register('after_render:html', function (html) {
     }
 
     // 3) BreadcrumbList
-    const catName = cats[0] || '文章'
+    // 站内已取消分类：有分类时用分类页，没有时退回归档页，别指向不存在的 /categories/文章/
+    const catName = cats[0] || '全部文章'
     const catUrl =
-      (catObjs[0] && catObjs[0].permalink) ||
-      root + '/categories/' + encodeURIComponent(catName) + '/'
+      (catObjs[0] && catObjs[0].permalink) || root + '/archives/'
     const crumbs = [
       { name: '首页', url: root + '/' },
       { name: catName, url: catUrl },

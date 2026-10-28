@@ -1,0 +1,5 @@
+# 分类体系已取消（2026-10-28）：/categories/ 与旧的分类页不再生成。
+# 站内主题侧栏仍会输出一个指向 /categories/ 的计数入口（已用 CSS 隐藏），
+# 收藏夹与搜索引擎里也可能有旧链接 —— 这里统一 301 回归档页，不留死链。
+/categories  /archives/  301
+/categories/*  /archives/  301

@@ -4,8 +4,6 @@ date: 2026-10-06 22:00:00
 cover: /img/cover/cover-ai-hype.jpg
 description: 2026 被称为 AI NAS 普及元年。本地大模型跑在 NAS 上到底是真需求还是噱头？先说清它现在做不到什么，再算这笔钱该不该花。
 keywords: AI NAS,绿联iDX6011 Pro,本地大模型,NAS智商税,Uliya,AI NAS值得买吗
-categories:
-  - 选购参考
 tags:
   - AI NAS
   - 绿联

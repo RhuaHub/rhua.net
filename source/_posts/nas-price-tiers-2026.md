@@ -4,8 +4,6 @@ date: 2026-10-06 21:00:00
 cover: /img/cover/cover-price-tiers.jpg
 description: 2026 年成品 NAS 选购指南——先说清哪些人根本不该买，再给五个价位档的真实差价与配置差异，附硬盘预算、电费与下单前清单。
 keywords: 成品NAS,NAS选购,NAS推荐,私有云,家庭存储,绿联,极空间,群晖,威联通
-categories:
-  - 选购参考
 tags:
   - 成品NAS
   - 选购指南
