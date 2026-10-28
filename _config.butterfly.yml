@@ -19,10 +19,9 @@ nav:
 
 menu:
   首页: / || fas fa-home
-  折腾手记: /categories/tinker/ || fas fa-terminal
-  选购参考: /categories/buying/ || fas fa-balance-scale
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
   关于: /about/ || fas fa-user
 
 # --------------------------------------
