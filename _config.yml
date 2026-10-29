@@ -122,7 +122,7 @@ post_cta:
 
 # 首页的分享缩略图。主题在首页没有 cover 时会把 og:image 退回头像图标，
 # 分享到微信很难看 —— 这里指定一张现成的封面顶上（只作用于首页，不影响文章各自封面）
-index_og_image: /img/cover/cover-immich.png
+index_og_image: /img/cover/cover-immich.jpg
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

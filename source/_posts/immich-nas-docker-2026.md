@@ -1,7 +1,7 @@
 ---
 title: 把 NAS 变成私人相册：Immich 部署实录（含手机自动备份）
 date: 2026-10-28 21:40:00
-cover: /img/cover/cover-immich.png
+cover: /img/cover/cover-immich.jpg
 description: 用 Docker Compose 在 NAS 上跑 Immich，替代 iCloud / 谷歌相册：四个容器各管什么、照片目录怎么放、手机自动备份怎么开、人脸识别为什么吃 CPU，以及我踩到的三个坑（数据库版本、权限、缩略图缓存）。
 keywords: Immich部署,NAS相册,Docker私有相册,Immich docker-compose,手机照片自动备份,自建相册,pvеctorch,immich坑
 tags:

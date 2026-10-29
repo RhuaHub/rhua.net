@@ -1,7 +1,7 @@
 ---
 title: 外网访问 NAS 不用端口映射：Tailscale 组网实录
 date: 2026-10-28 21:55:00
-cover: /img/cover/cover-tailscale.png
+cover: /img/cover/cover-tailscale.jpg
 description: 出差在外想访问家里的 NAS，别再折腾公网 IP 和端口映射。用 Tailscale 把手机、笔记本、NAS 组成一个虚拟内网：装 Docker 容器、开子网路由、配 MagicDNS，实测直连和走中继分别是什么速度，以及密钥过期、中继卡顿两个坑。
 keywords: Tailscale NAS,外网访问NAS,内网穿透,NAS远程访问,WireGuard组网,子网路由,不用端口映射,Tailscale docker
 tags:

@@ -1137,6 +1137,9 @@ CDN:
     # docsearch_css:
     # docsearch_js:
     # egjs_infinitegrid:
+    # 首页/归档的最近文章拼贴布局依赖它；原走 jsdelivr，大陆时常加载失败导致
+    # 列表布局塌掉。自托管到 source/vendor/egjs/（104KB），与 fontawesome 同理由。
+    egjs_infinitegrid: /vendor/egjs/infinitegrid.min.js
     # fancybox:
     # fancybox_css:
     # fireworks:
