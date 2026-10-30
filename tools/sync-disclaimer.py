@@ -77,6 +77,29 @@ def parse_source(text):
     return cfg, paragraphs
 
 
+def beian_html(cfg):
+    """备案号链接（ICP + 公安），备案通过后在 DISCLAIMER.md 里填值才会显示。
+
+    · beian_icp   例：粤ICP备2026XXXXXX 号   → 链接工信部 beian.miit.gov.cn
+    · beian_gongan 例：粤公网安备 440300020XXXXX 号 → 链接公安备案查询
+      （自动取号里的数字拼成查询链接）
+    """
+    parts = []
+    icp = (cfg.get("beian_icp") or "").strip()
+    if icp:
+        parts.append(
+            f'<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow">{icp}</a>'
+        )
+    gongan = (cfg.get("beian_gongan") or "").strip()
+    if gongan:
+        code = re.sub(r"\D", "", gongan)
+        url = f"https://beian.mps.gov.cn/#/query/webSearch?code={code}" if code else "https://beian.mps.gov.cn/"
+        parts.append(
+            f'<a href="{url}" target="_blank" rel="noopener nofollow">{gongan}</a>'
+        )
+    return parts
+
+
 def footer_html(cfg, paras):
     """页脚用的一段式声明：加粗前缀（即链接）+ 正文连续排版。
 
@@ -89,8 +112,12 @@ def footer_html(cfg, paras):
     body = cfg.get("footer_text") or "".join(paras)
     style = ("display:block;text-align:center;max-width:900px;margin:0 auto;"
              "padding:0 12px;font-size:13px;line-height:1.7")
+    # 备案号：ICP 备案通过后必须挂在页脚并链接工信部，公安备案 30 日内同样要挂
+    beian = beian_html(cfg)
+    tail = ('<span style="display:block;margin-top:4px">'
+            + " ｜ ".join(beian) + "</span>") if beian else ""
     return (f'<span class="disclaimer-inline" style="{style}">'
-            f'<b><a href="{link}">{prefix}</a></b>{body}</span>')
+            f'<b><a href="{link}">{prefix}</a></b>{body}{tail}</span>')
 
 
 def page_block(cfg, paras):
