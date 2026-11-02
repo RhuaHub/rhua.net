@@ -137,3 +137,6 @@ feed:
   type: atom
   path: atom.xml
   limit: 20
+  # 只输出摘要不输出全文：atom.xml 曾到 276KB，爬虫每次抓取都在浪费带宽；
+  # 订阅者点标题进站读全文，对站点反而更好
+  content: false

@@ -2,7 +2,7 @@
 title: 盘位怎么选：为什么 2026 年不该买 2 盘位
 date: 2026-10-06 21:10:00
 cover: /img/cover/cover-bay-count.jpg
-description: 成品 NAS 买 2 盘位还是 4 盘位？先说清 2 盘位适合谁，再用容量增速、RAID 利用率、升级成本和电费算清这笔账。
+description: 成品 NAS 买 2 盘位还是 4 盘位？先说清 2 盘位适合谁，再用容量增速、RAID 利用率、升级成本和电费算清这笔账，附 2 盘位后期升 4 盘位的真实代价。
 keywords: NAS盘位,2盘位,4盘位,NAS选购,RAID,家庭存储,NAS容量
 tags:
   - 盘位

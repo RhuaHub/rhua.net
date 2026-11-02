@@ -6,7 +6,11 @@
 
 # 静态资源走浏览器缓存：30 天。图片/字体/样式脚本文件名基本不变，
 # 改动时重命名即可突破缓存（与 Hexo 习惯一致）。
+
 /img/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+/fontawesome/*
   Cache-Control: public, max-age=2592000, must-revalidate
 
 /fonts/*
@@ -18,5 +22,21 @@
 /js/*
   Cache-Control: public, max-age=604800, must-revalidate
 
-/favicon.ico
-  Cache-Control: public, max-age=604800, must-revalidate
+# vendor 里的是第三方库的定版文件（文件名带版本号，不会悄悄变），
+# 可以吃一年缓存，省掉首页拼贴库的重复下载。
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 站点级索引文件：内容随每次部署变，给 1 小时缓存既能扛住爬虫高频抓取，
+# 又不会让更新延迟太久。
+/atom.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/llms.txt
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# 原来的 /favicon.ico 规则是死规则——实际图标路径是 /img/favicon-hua.ico，
+# 已被上面的 /img/* 覆盖，这里删掉避免误导。

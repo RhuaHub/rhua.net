@@ -2,7 +2,7 @@
 title: AI NAS 是不是智商税：¥15999 的绿联 iDX6011 Pro 值不值
 date: 2026-10-06 22:00:00
 cover: /img/cover/cover-ai-hype.jpg
-description: 2026 被称为 AI NAS 普及元年。本地大模型跑在 NAS 上到底是真需求还是噱头？先说清它现在做不到什么，再算这笔钱该不该花。
+description: 2026 被称为 AI NAS 普及元年。本地大模型跑在 NAS 上到底是真需求还是噱头？先说清它现在做不到什么，再算这笔钱该不该花，附 Ollama 在 NAS 上的真实帧率、内存占用与功耗实测。
 keywords: AI NAS,绿联iDX6011 Pro,本地大模型,NAS智商税,Uliya,AI NAS值得买吗
 tags:
   - AI NAS

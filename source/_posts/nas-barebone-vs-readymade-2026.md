@@ -2,7 +2,7 @@
 title: 准系统还是成品 NAS：差的不是钱，是后面那几百个小时
 date: 2026-10-06 22:10:00
 cover: /img/cover/cover-barebone.jpg
-description: ¥999 的准系统和 ¥2199 的成品 NAS 差在哪？先把不适合准系统的人排除掉，再算清硬件差价、系统折腾成本和售后这笔账。
+description: ¥999 的准系统和 ¥2199 的成品 NAS 差在哪？先把不适合准系统的人排除掉，再算清硬件差价、系统折腾成本和售后这笔账，附两款典型机器的选型取舍清单。
 keywords: 准系统,成品NAS,NAS对比,华强北NAS,飞牛fnOS,Unraid,NAS自建,NAS选购
 tags:
   - 准系统
