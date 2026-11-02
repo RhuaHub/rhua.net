@@ -176,9 +176,9 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-    - 不教你怎么买，只教你怎么玩
+    - 能跑通，才写下来
     - Docker 自托管 · 相册 · 影音 · 内网穿透
-    - 每篇都写清楚：为什么这么做、命令怎么敲、坑在哪
+    - 写清版本、边界和坑
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -196,9 +196,11 @@ index_layout: 1
 # 3: auto_excerpt (default)
 # false: do not show the article introduction
 index_post_content:
-  method: 3
+  # 用每篇文章自己的 description（method 1），不再截断正文：
+  # 之前 method 3 + length 500 会让首页每张卡片都铺 500 字，19 篇叠起来接近万字。
+  method: 1
   # If you set method to 2 or 3, the length need to config
-  length: 500
+  length: 200
 
 # --------------------------------------
 # Post Settings
@@ -303,15 +305,19 @@ aside:
     category: true
   card_author:
     enable: true
-    description:
+    # 留空会退回取 _config.yml 的 site description（整段 SEO 文案太长），这里单独给一句短的
+    description: 能跑通，才写下来
     button:
       enable: true
       icon: fas fa-envelope
       text: 联系我
       link: mailto:parit@sina.com
   card_announcement:
-    enable: false
-    content: This is my Blog
+    enable: true
+    # 首页唯一的「站点介绍」位：去掉头图后 typed 打字机不再渲染（#subtitle 随
+    # top_img 一起消失，上面 subtitle.sub 那组是死配置，恢复 index_img 才生效），
+    # 所以定位语改放这里 + 侧栏作者卡 description。
+    content: 能跑通，才写下来。命令可抄，坑先标出。
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -1103,7 +1109,7 @@ CDN:
   # Note: Dev version can only use 'local' for internal scripts
   # Note: When setting third-party scripts to 'local', you need to install hexo-butterfly-extjs
   internal_provider: local
-  third_party_provider: jsdelivr
+  third_party_provider: local
 
   # Add version number to url, true or false
   version: true

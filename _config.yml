@@ -4,8 +4,8 @@
 
 # Site
 title: NAS 折腾笔记
-subtitle: '不教你怎么买，只教你怎么玩'
-description: 'Joey 的个人博客：记录 NAS 上的功能实现——Docker 自托管、相册与影音、内网穿透、备份与监控。每篇都写清楚为什么这么做、命令怎么敲、坑在哪。'
+subtitle: '能跑通，才写下来'
+description: 'NAS 实测笔记：Docker 自托管、相册影音、内网穿透、备份监控怎么搭。命令能抄，坑先标出来，每篇注明适用版本。'
 keywords: NAS折腾,NAS教程,NAS功能,Docker部署,自托管服务,私有云,家庭服务器,内网穿透,Immich,Jellyfin,Tailscale,Alist,群晖,绿联,PVE,软路由
 author: Joey
 language: zh-CN
@@ -122,7 +122,7 @@ post_cta:
 
 # 首页的分享缩略图。主题在首页没有 cover 时会把 og:image 退回头像图标，
 # 分享到微信很难看 —— 这里指定一张现成的封面顶上（只作用于首页，不影响文章各自封面）
-index_og_image: /img/cover/cover-immich.jpg
+index_og_image: /img/og-site.jpg
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
