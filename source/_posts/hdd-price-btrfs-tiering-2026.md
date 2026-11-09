@@ -1,6 +1,7 @@
 ---
 title: 硬盘涨价先别买：用 btrfs 压缩 + 冷数据分层，把现有 NAS 空间榨出来
 date: 2026-11-09 21:10:00
+cover: /img/cover/cover-btrfs.jpg
 description: 涨价周期里先别急着加盘：用 compsize 量一下现有数据到底能压多少，再把半年没动过的冷数据挪到外接盘。附 fstab 压缩参数、defrag 与快照共享块冲突的风险、rsync 先 dry-run 的分层流程，以及哪些数据压了也是白费电。
 keywords: 硬盘涨价,btrfs 压缩,zstd,compsize,NAS 扩容,冷数据分层,rsync,存储涨价
 tags:
