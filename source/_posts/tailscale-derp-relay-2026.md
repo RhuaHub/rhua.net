@@ -1,7 +1,7 @@
 ---
 title: 打洞失败别忍：给 Tailscale 自建 DERP 中继，把远程速度拉回来
 date: 2026-11-09 21:00:00
-cover: /img/cover/cover-derp.jpg
+cover: /img/cover/cover-derp-relay.jpg
 description: Tailscale 直连失败时会回落到官方 DERP 中继，跨运营商、出国、对称 NAT 下延迟和带宽会明显掉一档。这篇只解决这一件事：自建一个 DERP 节点，写清前置条件、derper 启动参数、ACL 的 derpMap 写法、netcheck 验证，以及证书、UDP 3478、verify-clients 三个最常见的坑。基础组网和子网路由见旧文，本文不重复。
 keywords: Tailscale DERP,自建DERP,derper,Tailscale 中继,打洞失败,netcheck,WireGuard,NAS 远程访问
 tags:
