@@ -14,8 +14,9 @@
 /consult  /  301
 /consult/*  /  301
 
-# www 与主域统一入口，避免同类内容出现两个地址。
-https://www.rhua.net/*  https://rhua.net/:splat  301
+# www → 主域的统一跳转不在本文件配置：Workers 的 _redirects 只允许相对路径作为来源，
+# 写绝对 URL 会导致 wrangler deploy 报 100324 并使整个部署失败。
+# 如需 www 301，请在 Cloudflare Dashboard 用 Bulk Redirects（www.rhua.net/* → https://rhua.net/:splat）。
 
 # 浏览器默认请求 /favicon.ico，实际图标在 /img/favicon-hua.ico。
 /favicon.ico  /img/favicon-hua.ico  200
