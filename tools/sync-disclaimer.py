@@ -45,7 +45,7 @@ DEFAULT_SINCE = "2026 年 10 月 2 日"
 PAGE_TEMPLATE = """---
 title: 免责声明
 date: {date}
-description: 本站是个人技术博客：内容基于实测，不接联盟推广、不写软文；照做的风险自负。
+description: 本站是个人技术博客：内容基于实测，部分商品链接可能为联盟链接并已披露；照做的风险自负。
 ---
 
 {before}

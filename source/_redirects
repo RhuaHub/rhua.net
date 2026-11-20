@@ -13,3 +13,9 @@
 /pack/*  /  301
 /consult  /  301
 /consult/*  /  301
+
+# www 与主域统一入口，避免同类内容出现两个地址。
+https://www.rhua.net/*  https://rhua.net/:splat  301
+
+# 浏览器默认请求 /favicon.ico，实际图标在 /img/favicon-hua.ico。
+/favicon.ico  /img/favicon-hua.ico  200
