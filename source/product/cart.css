@@ -65,3 +65,15 @@
   .np-hero-img{width:100%}
   .np-drawer{width:100%}
 }
+
+.np-form-title{font-size:13px;color:var(--text-sub,#777);margin:2px 0 10px;font-weight:600}
+.np-form{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.np-form input{width:100%;box-sizing:border-box;border:1px solid var(--text-op,#ddd);background:var(--card-bg,#fff);color:var(--text,#333);border-radius:6px;padding:9px 11px;font-size:13px;outline:none}
+.np-form input:focus{border-color:#b8860b}
+.np-form input::placeholder{color:#aaa}
+.np-copy-all{width:100%;border:1px solid #b8860b;color:#b8860b;background:transparent;border-radius:6px;padding:10px;font-size:14px;cursor:pointer;margin-bottom:8px}
+.np-copy-all:hover{background:#b8860b;color:#fff}
+.np-msg{font-size:12px;color:#b8860b;min-height:16px;margin-bottom:6px;opacity:0;transition:opacity .2s}
+.np-msg.on{opacity:1}
+.np-modal{max-height:92vh;overflow-y:auto}
+.np-modal-inner{box-sizing:border-box}
