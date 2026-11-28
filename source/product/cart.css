@@ -77,3 +77,9 @@
 .np-msg.on{opacity:1}
 .np-modal{max-height:92vh;overflow-y:auto}
 .np-modal-inner{box-sizing:border-box}
+
+.np-submit{width:100%;border:0;background:#b8860b;color:#fff;border-radius:6px;padding:11px;font-size:15px;cursor:pointer;margin-bottom:8px}
+.np-submit:hover{opacity:.88}
+.np-submit:disabled{opacity:.6;cursor:wait}
+.np-copy-all{border-color:var(--text-op,#ddd);color:var(--text-sub,#777)}
+.np-copy-all:hover{background:var(--muted-bg,#f7f5ef);color:var(--text,#333)}
