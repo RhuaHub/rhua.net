@@ -84,7 +84,9 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+## 2026-11-28：Cloudflare Pages 每次 checkout 都会刷新文件 mtime，
+## 用 mtime 会让所有文章显示「更新于」构建当天，而不是真实内容更新时间。
+updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
