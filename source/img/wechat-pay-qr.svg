@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#f7f5ef"/>
+  <rect x="20" y="20" width="360" height="360" rx="12" fill="#ffffff" stroke="#b8860b" stroke-width="2"/>
+  <circle cx="200" cy="150" r="52" fill="#07c160"/>
+  <path d="M172 134c0-15 13-27 29-27 14 0 25 9 28 21-6-4-13-6-20-6-18 0-32 13-33 30-3-7-4-12-4-18z" fill="#ffffff"/>
+  <circle cx="184" cy="146" r="4" fill="#07c160"/>
+  <circle cx="216" cy="146" r="4" fill="#07c160"/>
+  <path d="M168 168c8 12 23 20 38 20 6 0 12-1 17-4-9 10-22 16-37 16-18 0-33-11-39-27 7 1 14 0 21-5z" fill="#ffffff"/>
+  <text x="200" y="252" font-family="sans-serif" font-size="20" fill="#333" text-anchor="middle">微信支付</text>
+  <text x="200" y="288" font-family="sans-serif" font-size="14" fill="#888" text-anchor="middle">请用微信扫一扫付款</text>
+  <text x="200" y="330" font-family="sans-serif" font-size="12" fill="#b8860b" text-anchor="middle">替换 /img/wechat-pay-qr.svg 为真实收款码</text>
+</svg>
