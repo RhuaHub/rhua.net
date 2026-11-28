@@ -148,7 +148,8 @@
           '</div>' +
           '<div class="np-order"><span>订单号</span><code id="np-order-no">' + esc(orderNo) + '</code>' +
             '<button data-copy="1" id="np-copy">复制</button></div>' +
-          '<button class="np-copy-all" data-copyall="1">复制完整订单信息发给卖家</button>' +
+          '<button class="np-submit" data-submit="1">提交订单</button>' +
+          '<button class="np-copy-all" data-copyall="1">或：复制订单信息发给卖家</button>' +
           '<div class="np-msg" id="np-msg"></div>' +
           '<p class="np-pay-note">付款后请把订单信息发给卖家，确认后发货。</p>' +
         '</div>' +
@@ -172,6 +173,42 @@
       msg('当前浏览器不支持自动复制，请手动选择文本复制');
     }
   }
+  function submitOrder(btn) {
+    syncShip();
+    if (!ship.name || !ship.phone || !ship.addr) {
+      msg('请先填写收货人、手机号和收货地址');
+      return;
+    }
+    var oldText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '提交中...';
+    var items = [];
+    for (var k in cart) if (cart.hasOwnProperty(k)) {
+      var g = find(k);
+      if (g) items.push({ name: g.name, qty: cart[k], amount: g.price * cart[k] });
+    }
+    fetch('/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        orderNo: orderNo, items: items,
+        name: ship.name, phone: ship.phone, addr: ship.addr, amount: totalPrice()
+      })
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      btn.disabled = false;
+      btn.textContent = oldText;
+      if (res.ok) {
+        msg('订单已提交，请完成付款');
+      } else {
+        msg('提交失败：' + (res.error || '未知错误') + '，请复制订单信息发给卖家');
+      }
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = oldText;
+      msg('网络异常，请复制订单信息发给卖家');
+    });
+  }
+
   function syncShip() {
     var n = document.getElementById('np-name');
     var p = document.getElementById('np-phone');
@@ -230,6 +267,10 @@
     if (t.getAttribute('data-close')) { closeAll(); return; }
     if (t.getAttribute('data-copy')) {
       copy(document.getElementById('np-order-no').textContent, t); return;
+    }
+    if (t.getAttribute('data-submit')) {
+      submitOrder(t);
+      return;
     }
     if (t.getAttribute('data-copyall')) {
       syncShip();
