@@ -19,7 +19,7 @@ nav:
 
 menu:
   首页: / || fas fa-home
-  归档: /archives/ || fas fa-archive
+  产品: /product/ || fas fa-shopping-bag
   标签: /tags/ || fas fa-tags
   关于: /about/ || fas fa-user
 
